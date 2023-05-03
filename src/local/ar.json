@@ -1,0 +1,29 @@
+{
+     "c_customerName" :"اسم الزبون",
+    "c_newCustomer":"زبون جديد",
+    "customerdetails":"بيانات الزبون",
+    "c_username":"اسم المسنخدم",
+    "c_email":"البريد الالكتروني",
+    "c_Address":"العنوان",
+    "c_TaxNumber":"الرقم الضريبي",
+    "from":"من",
+    "c_Phone":"رقم الهاتف",
+    "saveBtn":"حقظ",
+    "closeBtn":"الغاء",
+    "tax":"الضريبة",
+    "pname":"المنتج",
+    "price":"السعر",
+    "Quantity":"الكمية",
+    "discount":"التخفيظ",
+    "afterdiscount":"السعر بعد التخفيظ",
+
+    "total":"الاجمالي",
+    "pricewithcost":"السعر مع القيمة المضافة",
+    "pricewithoutcost":"السعر بدون القيمة المضافة",
+    "invoicesummary":"ملخص الفاتورة",
+    "download":"تحميل",
+    "print":"طباعة",
+    "createnew":"انشاء فاتورة جديد"
+
+    
+}

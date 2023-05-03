@@ -1,0 +1,28 @@
+{
+    "c_customerName" :"customer name",
+    "customerdetails":"customer details",
+    "c_newCustomer":"new customer",
+    "c_username":"username",
+    "c_email":"email",
+    "c_Address":"Address",
+    "c_TaxNumber":"Tax Number",
+    "from":"From",
+    "c_Phone":"Phone",
+    "saveBtn":"save",
+     "closeBtn":"Close",
+     "tax":"Tax",
+    "pname":"product",
+    "price":"price",
+    "Quantity":"Quantity",
+    "discount":"discount",
+    "afterdiscount":"price after discount",
+    "total":"total",
+    "pricewithcost":"price with cost",
+    "pricewithoutcost":"price without cost",
+    "invoicesummary":"invoice summary",
+    "download":"download",
+    "print":"print",
+    "createnew":"create new"
+
+    
+}

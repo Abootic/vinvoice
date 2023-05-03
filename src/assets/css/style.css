@@ -1,0 +1,59 @@
+:root {
+  --offcanvas-width: 300px;
+  --topNavbarHeight:0;
+}
+body{
+    background: #ddd;
+}
+.fixed-top{
+    padding: 0;
+}
+.sidebar-nav {
+  width: var(--offcanvas-width);
+}
+.sidebar-link {
+  display: flex;
+  align-items: center;
+}
+.sidebar-link .right-icon {
+  display: inline-flex;
+}
+.sidebar-link[aria-expanded="true"] .right-icon {
+  transform: rotate(180deg);
+}
+.dir{
+    direction: rtl;
+}
+.dir-sm{
+    direction: ltr;
+}
+.dash-board{
+    border:2px dashed #ddd;
+}
+.logout{
+    position: absolute !important;
+    top:90vh;
+}
+.card{
+    background: transparent;
+    border:none;
+}
+@media (min-width: 992px) {
+  body {
+    overflow: auto !important;
+  }
+  main {
+    margin-left: var(--offcanvas-width);
+  }
+  /* this is to remove the backdrop */
+  .offcanvas-backdrop::before {
+    display: none;
+  }
+  .sidebar-nav {
+    -webkit-transform: none;
+    transform: none;
+    visibility: visible !important;
+    height: 100vh;
+    top: var(--topNavbarHeight);
+  }
+}
