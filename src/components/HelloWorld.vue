@@ -1,14 +1,13 @@
 <template>
-    <div class="layout-wrapper layout-content-navbar " dir="rtl">
+    <div class="layout-wrapper layout-content-navbar ">
   <div class="layout-container" id="main-dirv">
-    <button @click=" onSwitchLanguage">switch</button>
+    
    <invoice/>
     </div>
   </div>
 </template>
 
 <script>
-import { useLanguageStore } from '@/stores/languageStore';
 
 
 import invoice from "./invoice/invoice.vue";
@@ -21,22 +20,7 @@ export default {
     },
     components: { invoice },
     
-  methods:{
-    onSwitchLanguage(){
- const langStore=useLanguageStore();
-  langStore.switchLanguage();
-   console.log(" vvvvvvvvvvvvvvvvvv "+langStore.language);
- 
-      if(langStore.language=="ar"){
-        console.log(" 1111111111111111111111111111111 "+langStore.language);
-        document.getElementById("main-dirv").style.direction="rtl";
-       
-      }else{
-        console.log(" 22222222222222222 "+langStore.language);
-        document.getElementById("main-dirv").style.direction="ltr";
-      }
- },
-  }
+
 }
 </script>
 

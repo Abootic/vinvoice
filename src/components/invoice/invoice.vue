@@ -72,7 +72,7 @@
                 </div>
 
                 <!---------------------------------- InvoiceTable ------------------------------->
-                <div class="row">
+                <div class="row" id="t-section">
                   <!-- <div v-if="taskStore.isInvoiceFormValueShow" class="col-lg-8 col-mb-8 col-sm-12 col-xs-12 mt-3" style="background-color: red;"> -->
                   <div v-if="taskStore.isInvoiceFormValueShow" class="col-lg-8 col-mb-8 col-sm-12 col-xs-12 mt-3">
                     <invoicedetails v-for="(
@@ -129,8 +129,8 @@
 }
 
 .text-option {
-  width: 152%;
-  margin-left: 1%;
+  width: 119%;
+    margin-left: -8%;
 }
 
 .plus-icon {
@@ -348,11 +348,13 @@ export default {
       if(langStore.language=="ar"){
         document.getElementById("f-section").style.direction="rtl";
         document.getElementById("s-section").style.direction="rtl";
+        document.getElementById("t-section").style.direction="rtl";
        
       }else{
       
         document.getElementById("f-section").style.direction="ltr";
         document.getElementById("s-section").style.direction="ltr";
+        document.getElementById("t-sections").style.direction="ltr";
       }
  },
  
