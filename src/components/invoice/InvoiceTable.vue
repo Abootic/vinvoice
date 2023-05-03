@@ -1,5 +1,5 @@
 <template>
-  <form class="row" v-on:submit="handelSubmit($event)">
+  <form  class="row" v-on:submit="handelSubmit($event)">
     <div class="col-lg-9 col-mb-9 col-sm-12 col-xs-12 mt-3">
       <div
         class="row"

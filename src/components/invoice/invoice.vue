@@ -1,16 +1,16 @@
 <template>
-  <section>
-    <main>
+  <section id="main-dirv">
+    <main >
       <!--The Container-->
-      <button @click=" langStore.switchLanguage()">switch</button>
-      <div class="container-fluid dir">
+      <button @click=" onSwitchLanguage">switch</button>
+      <div class="container-fluid " >
         <div class="row">
           <!--The Container Insider-->
           <div class="d-grid gap-2">
             <!--Card-->
             <div class="card bg-white shadow p-3 mb-5 bg-body-tertiary rounded dir-sm mt-5">
-              <!--Card Body-->
-              <div class="card-body d-grid gap-2">
+              <!--Card Bodytttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt-->
+              <div class="card-body d-grid gap-2" id="f-section" >
                 <div class="row">
                   <!--FRom Part-->
                   <div class="col-sm-4 m-2 d-grid gap-2">
@@ -88,7 +88,7 @@
                 <invoiceSummery />
               </div>
               <!---------------------------------- btn ------------------------------->
-              <div class="btn-group" role="group" aria-label="Basic example">
+              <div class="btn-group" role="group" aria-label="Basic example" id="s-section" >
                 <button type="button" id="add-orderId" class="btn m-2 btn-success"  v-if="constrctBtn" @click="onSave($event)">
                   {{ langStore.TRANSLATE("saveBtn") }}
                 </button>
@@ -130,7 +130,7 @@
 
 .text-option {
   width: 152%;
-  margin-left: -53%;
+  margin-left: 1%;
 }
 
 .plus-icon {
@@ -340,22 +340,22 @@ export default {
           store.$reset();
           window.location.reload();
   },
-  //doawnload pdf 
-//   async doawnload(e){
-//     e.preventDefault();
-//     try{
-//       const url =localStorage.getItem("invoice_link");
-//       const res=await this.callApi("Get",url);
-// if(res.status===200){
-  
-//   FileSaver.saveAs(res.data,"try.pdf");
-// }else{
-//   console.log("file note save");
-// }
-//     }catch(e){
-// console.log(e.response);
-//     }
-//   }
+  onSwitchLanguage(){
+ const langStore=useLanguageStore();
+  langStore.switchLanguage();
+
+ 
+      if(langStore.language=="ar"){
+        document.getElementById("f-section").style.direction="rtl";
+        document.getElementById("s-section").style.direction="rtl";
+       
+      }else{
+      
+        document.getElementById("f-section").style.direction="ltr";
+        document.getElementById("s-section").style.direction="ltr";
+      }
+ },
+ 
 
 },
    async   beforeMount(){
