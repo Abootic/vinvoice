@@ -1,16 +1,16 @@
 <template>
   <form  class="row" v-on:submit="handelSubmit($event)">
-    <div class="col-lg-12 col-mb-12 col-sm-12 col-xs-12 mt-3">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
       <div
         class="row"
         style="text-align: initial; justify-content: space-between"
       >
-        <div id="col-start" class="col-lg-2 col-mb-2 col-sm-2 col-xs-12">
+        <div id="col-start" class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
           <div class="row">
             <!-- <input    v-model="data.pid"  class="from-control table-form"> -->
-            <div class="col-lg-12 col-mb-12 col-sm-12 table-header">{{ langStore.TRANSLATE("pname") }}</div>
+            <div class="col-lg-12 col-md-12 col-sm-12 table-header">{{ langStore.TRANSLATE("pname") }}</div>
 
-            <div class="col-lg-12 col-mb-12 col-sm-12 mt-2" id="dropdown-wrapper">
+            <div class="col-lg-12 col-md-12 col-sm-12 mt-2" id="dropdown-wrapper">
               <div class="selected-item"  @click="isArrowVisible=!isArrowVisible">
                 <span style="    font-size: 13px; font-weight: bold;">{{ selectedItem!=null? selectedItem.name:langStore.TRANSLATE("select") }}</span>
                 <svg 
@@ -46,12 +46,12 @@
             <span class="text-danger">{{ nameError }}</span>
           </div>
         </div>
-        <div id="col-start" class="col-lg-2 col-mb-2 col-sm-2 col-xs-12">
+        <div id="col-start" class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
           <div class="row">
-            <div class="col-lg-8 col-mb-8 col-sm-8 table-header">
+            <div class="col-lg-8 col-md-8 col-sm-8 table-header">
               {{ langStore.TRANSLATE("Quantity") }}
             </div>
-            <div class="col-lg-8 col-mb-8 col-sm-8 mt-2">
+            <div class="col-lg-8 col-md-8 col-sm-8 mt-2">
               <input
                 type="number"
                 v-model="store.data.quantity"
@@ -61,12 +61,12 @@
             </div>
           </div>
         </div>
-        <div id="col-start" class="col-lg-2 col-mb-2 col-sm-2 col-xs-12">
+        <div id="col-start" class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
           <div class="row">
-            <div class="col-lg-8 col-mb-8 col-sm-8 table-header">
+            <div class="col-lg-8 col-md-8 col-sm-8 table-header">
               {{ langStore.TRANSLATE("price") }}
             </div>
-            <div class="col-lg-8 col-mb-8 col-sm-8 mt-2">
+            <div class="col-lg-8 col-md-8 col-sm-8 mt-2">
               <!-- v-on:input="onPrice($event)" -->
               <input
               readonly
@@ -78,12 +78,12 @@
             <span class="text-danger">{{ priceErr }}</span>
           </div>
         </div>
-        <div id="col-start" class="col-lg-2 col-mb-2 col-sm-2 col-xs-12">
+        <div id="col-start" class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
           <div class="row">
-            <div class="col-lg-8 col-mb-8 col-sm-8 table-header">
+            <div class="col-lg-8 col-md-8 col-sm-8 table-header">
               {{ langStore.TRANSLATE("discount") }}
             </div>
-            <div class="col-lg-8 col-mb-8 col-sm-8 mt-2">
+            <div class="col-lg-8 col-md-8 col-sm-8 mt-2">
               <!-- v-on:input="onDiscount($event)" -->
               <input
               readonly
@@ -95,12 +95,12 @@
             <span class="text-danger">{{ discountErr }}</span>
           </div>
         </div>
-        <div id="col-start" class="col-lg-2 col-mb-2 col-sm-2 col-xs-12">
+        <div id="col-start" class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
           <div class="row">
-            <div class="col-lg-12 col-mb-12 col-sm-12 table-header">
+            <div class="col-lg-12 col-md-12 col-sm-12 table-header">
               {{ langStore.TRANSLATE("afterdiscount") }}
             </div>
-            <div class="col-lg-8 col-mb-8 col-sm-8 mt-2">
+            <div class="col-lg-8 col-md-8 col-sm-8 mt-2">
               <!-- v-on:input="onDiscount($event)" -->
               <input
               readonly
@@ -113,12 +113,12 @@
           </div>
         </div>
        
-        <div class="col-lg-2 col-mb-2 col-sm-2">
+        <div class="col-lg-2 col-md-2 col-sm-2">
           <div class="row">
-            <div class="col-lg-12 col-mb-2 col-sm-12 table-header">
+            <div class="col-lg-12 col-md-2 col-sm-12 table-header">
               {{ langStore.TRANSLATE("total") }}
             </div>
-            <div class="col-lg-12 col-mb-12 col-sm-12 mt-2">
+            <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
               <input
                 type="number"
                 readonly

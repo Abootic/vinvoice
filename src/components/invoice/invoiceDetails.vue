@@ -23,13 +23,13 @@
         <div id="col-start" class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 table-header">{{ langStore.TRANSLATE("discount") }}</div>
-                    <div class="col-lg-12 col-md-2 col-sm-12  mt-2">{{invoiceList.discount}}</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12  mt-2">{{invoiceList.discount}}</div>
             </div>
         </div>
         <div id="col-start" class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 table-header">    {{ langStore.TRANSLATE("afterdiscount") }}</div>
-                    <div class="col-lg-12 col-md-2 col-sm-12  mt-2">{{invoiceList.price-invoiceList.discount}}</div>
+                    <div class="col-lg-12 col-md-12 col-sm-12  mt-2">{{invoiceList.price-invoiceList.discount}}</div>
             </div>
         </div>
         <div id="col-start" class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
