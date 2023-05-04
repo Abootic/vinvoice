@@ -3,12 +3,12 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
       <div
         class="row"
-        style="text-align: initial; justify-content: space-between"
+       
       >
         <div id="col-start" class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
           <div class="row">
             <!-- <input    v-model="data.pid"  class="from-control table-form"> -->
-            <div class="col-lg-12 col-md-12 col-sm-12 table-header">{{ langStore.TRANSLATE("pname") }}</div>
+            <div class="col-lg-12 col-md-12 col-sm-12 table-header text-center">{{ langStore.TRANSLATE("pname") }}</div>
 
             <div class="col-lg-12 col-md-12 col-sm-12 mt-2" id="dropdown-wrapper">
               <div class="selected-item"  @click="isArrowVisible=!isArrowVisible">
@@ -48,7 +48,7 @@
         </div>
         <div id="col-start" class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
           <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 table-header">
+            <div class="col-lg-12 col-md-12 col-sm-12 table-header text-center">
               {{ langStore.TRANSLATE("Quantity") }}
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
@@ -63,7 +63,7 @@
         </div>
         <div id="col-start" class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
           <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 table-header">
+            <div class="col-lg-12 col-md-12 col-sm-12 table-header text-center">
               {{ langStore.TRANSLATE("price") }}
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
@@ -80,7 +80,7 @@
         </div>
         <div id="col-start" class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
           <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 table-header">
+            <div class="col-lg-12 col-md-12 col-sm-12 table-header text-center">
               {{ langStore.TRANSLATE("discount") }}
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
@@ -97,7 +97,7 @@
         </div>
         <div id="col-start" class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
           <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 table-header">
+            <div class="col-lg-12 col-md-12 col-sm-12 table-header text-center">
               {{ langStore.TRANSLATE("afterdiscount") }}
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
@@ -115,7 +115,7 @@
        
         <div class="col-lg-2 col-md-2 col-sm-2">
           <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 table-header">
+            <div class="col-lg-12 col-md-12 col-sm-12 table-header text-center">
               {{ langStore.TRANSLATE("total") }}
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
