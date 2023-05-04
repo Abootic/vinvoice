@@ -13,8 +13,8 @@
                 aria-label="Default select example"
               >
                 <!-- <option v-for="(pay_method ,key) in store.payment_methods" :key="key" :value="pay_method">{{pay_method}}</option> -->
-                <option>{{ langStore.TRANSLATE("select") }}</option>
-                <option :value="0" >
+                <!-- <option>{{ langStore.TRANSLATE("select") }}</option> -->
+                <option selected :value="0" >
                   {{ langStore.TRANSLATE("is_paidwithouttax") }}
                 </option>
                 <option :value="1">

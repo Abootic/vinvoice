@@ -8,9 +8,9 @@
         <div id="col-start" class="col-lg-2 col-mb-2 col-sm-2 col-xs-12">
           <div class="row">
             <!-- <input    v-model="data.pid"  class="from-control table-form"> -->
-            <div class="col-lg-8 col-mb-8 col-sm-8 table-header">{{ langStore.TRANSLATE("pname") }}</div>
+            <div class="col-lg-12 col-mb-12 col-sm-12 table-header">{{ langStore.TRANSLATE("pname") }}</div>
 
-            <div class="col-lg-10 col-mb-10 col-sm-10 mt-2" id="dropdown-wrapper">
+            <div class="col-lg-12 col-mb-12 col-sm-12 mt-2" id="dropdown-wrapper">
               <div class="selected-item"  @click="isArrowVisible=!isArrowVisible">
                 <span style="    font-size: 13px; font-weight: bold;">{{ selectedItem!=null? selectedItem.name:langStore.TRANSLATE("select") }}</span>
                 <svg 
@@ -435,22 +435,29 @@ font-size: 20px;
   border-radius: 5px;
 }
 .options {
-  width: 120%;
+  width: 100%;
 }
 ul {
   list-style: none;
-  text-align: left;
-  padding-left: 8px;
+  text-align: center;
+  /* padding-left: 8px; */
   max-height: 100px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 li {
-  width: 100%;
+  /* width: 100%;
   border-bottom: 1px solid lightgray;
   padding: 10px;
   background-color: #ffff;
   cursor: pointer;
+  font-size: 15px ; */
+  width: 100%;
+    border-bottom: 1px solid lightgray;
+    padding: 9px;
+    background-color: #ffff;
+    cursor: pointer;
+    font-size: 17px;
 }
 li:hover {
   background: #70878a;

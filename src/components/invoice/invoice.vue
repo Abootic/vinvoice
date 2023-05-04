@@ -322,7 +322,9 @@ export default {
       if(store.orderobj.paid_method==""){
         store.orderobj.paid_method="كاش";
       }
-   
+      if(store.orderobj.is_paid==""){
+        store.orderobj.is_paid=0;
+      }
     
       let chsherId=   window.localStorage.getItem("chsherId");
       store.orderobj.notes=this.note;
