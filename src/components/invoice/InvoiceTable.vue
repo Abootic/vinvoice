@@ -10,7 +10,7 @@
             <!-- <input    v-model="data.pid"  class="from-control table-form"> -->
             <div class="col-lg-8 col-mb-8 col-sm-8 table-header">{{ langStore.TRANSLATE("pname") }}</div>
 
-            <div class="col-lg-8 col-mb-8 col-sm-8 mt-2" id="dropdown-wrapper">
+            <div class="col-lg-10 col-mb-10 col-sm-10 mt-2" id="dropdown-wrapper">
               <div class="selected-item"  @click="isArrowVisible=!isArrowVisible">
                 <span>{{ selectedItem!=null? selectedItem.name:"Select"}}</span>
                 <svg 
@@ -31,7 +31,7 @@
                   <input
                    
                     placeholder="search"
-                    v-model="data.name"
+                    v-model="store.data.name"
                     class="form-control search-input"
                   />
                   <span v-if="filterComboBox.length===0"> No data Available</span>
@@ -54,7 +54,7 @@
             <div class="col-lg-8 col-mb-8 col-sm-8 mt-2">
               <input
                 type="number"
-                v-model="data.quantity"
+                v-model="store.data.quantity"
                 v-on:input="onCalQauntity($event)"
                 class="from-control table-form"
               />
@@ -71,7 +71,7 @@
               <input
               readonly
                 type="text"
-                v-model="data.price"
+                v-model="store.data.price"
                 class="from-control table-form"
               />
             </div>
@@ -88,7 +88,7 @@
               <input
               readonly
                 type="number"
-                v-model="data.discount"
+                v-model="store.data.discount"
                 class="from-control table-form"
               />
             </div>
@@ -122,7 +122,7 @@
               <input
                 type="number"
                 readonly
-                v-model="data.Subtotal"
+                v-model="store.data.Subtotal"
                 class="from-control table-form"
               />
             </div>
@@ -135,27 +135,15 @@
         style="text-align: initial; justify-content: space-between"
       >
         <div class="col-8 mt-3 mb-3">
-          <!-- <input type="text" placeholder="Description" v-model="data.Description" class="from-control description-input"> -->
+         
         </div>
 
-        <div class="col-4 mt-3 mb-3">
+        <div class="col-12 mt-3 mb-3">
           <div class="row">
-            <button type="submit" style="padding: 0 50px 0 20px;" class="btn  col-2">
-              <img
-                src="https://www.svgrepo.com/show/28381/correct-signal.svg"
-                class="icon-svg"
-                alt="Correct Vector SVG Icon - SVG Repo"
-                jsname="kn3ccd"
-              />
+            <button type="submit" class="btn btn-info col-12 mt-3 mb-3">
+             <span>{{ langStore.TRANSLATE("addItem") }}</span>
             </button>
-            <!-- <button type="submit" class="btn col-2">
-              <img
-                src="https://www.svgrepo.com/show/349637/trash.svg"
-                class="icon-svg"
-                alt="Correct Vector SVG Icon - SVG Repo"
-                jsname="kn3ccd"
-              />
-            </button> -->
+           
           </div>
         </div>
       </div>
@@ -192,18 +180,6 @@ export default {
       customersName: [],
      
      
-    
-      data: {
-        id:0,
-      
-        name: "",
-        quantity: 1,
-        price: 1,
-        discount: 0.0,
-        Tax: 0,
-        Subtotal: 0.0,
-        Description: "",
-      },
       nameError: "",
       priceErr: "",
       discountErr: "",
@@ -215,8 +191,8 @@ export default {
     filterComboBox(){
      
       const store=useTaskStore();
-      const query=this.data.name.toLowerCase();
-      if(this.data.name==""){
+      const query=store.data.name.toLowerCase();
+      if(store.data.name==""){
         return store.products;
       }
       return store.products.filter((item)=>{
@@ -229,57 +205,55 @@ export default {
     ///////////////////////// start invoiceTotal /////////////////
 
     invoiceTotal() {
-  
-      let total = this.data.quantity * this.data.price;
-      let totalwIthTax=total*(this.data.Tax/100);
+  const store=useTaskStore();
+      let total = store.data.quantity * store.data.price;
+      let totalwIthTax=total*(store.data.Tax/100);
 
-      if (this.data.discount == 0.0) {
-        this.data.Subtotal = total +totalwIthTax- this.data.discount;
+      if (store.data.discount == 0.0) {
+        store.data.Subtotal = total +totalwIthTax- store.data.discount;
       } else {
-        this.data.Subtotal = total +totalwIthTax- this.data.discount;
+        store.data.Subtotal = total +totalwIthTax- store.data.discount;
       }
     },
-    ///////////////////////////////    end invoiceTotal //////////////////////
-    ///////////////// start add order //////////////////////////////
+  
     handelSubmit(e) {
       const store = useTaskStore();
       e.preventDefault();
       if (this.selectedItem== null) {
         this.nameError = "enter name";
-      } else if (this.data.price == 0.0) {
+      } else if (store.data.price == 0.0) {
         this.priceErr = "enter price";
       }
-      //     else  if(this.data.discount==0.0){  this.discountErr="enter discount"; }
       else {
        
     let i= store.counter++;
       
-         this.data.id=i;
-         this.data.Tax=store.countTax;
-         console.log("store.countTax "+store.countTax);
-        store.addToInvoice(this.data);
+    store.data.id=i;
+    store.data.Tax=store.countTax;
+       
+        store.addToInvoice(store.data);
         store.orderobj.order_details.push({
           id:89,
           cid:i,
-          name: this.data.name,
-          price: this.data.Subtotal,
+          name: store.data.name,
+          price: store.data.Subtotal,
           orginalPrice:this.orginalPrice,
-          quantity: this.data.quantity,
-          tax: this.data.Tax,
+          quantity: store.data.quantity,
+          tax: store.data.Tax,
         });
       
         store.mainSaveBtn = true;
         store.getInvoiceSummery;
 
-        this.data = {
-          //id:0,
+        store.data = {
+          
           name: "",
           quantity: 1,
           price: 0.0,
           discount: 0.0,
           Tax: 0.0,
           Subtotal: 0.0,
-          Description: "",
+         
         };
      
       }
@@ -289,35 +263,38 @@ export default {
     },
  
     onSelectedItem(item){
-    
+      const store = useTaskStore();
       this.selectedItem=item;
-      this.data.name=item.name;
+      store.data.name=item.name;
       this.isArrowVisible=false;
       this.nameError="";
-      const store = useTaskStore();
+    
       if (store.productsCash.length > 0) {
         store.productsCash.map((a) => {
           a.map((p) => {
             if (p.id == item.id) {
               if (p.apply_vat == 0) {
-                  this.data.discount=p.price-p.price_after_discount;
-                  this.priceAfterDiscount=p.price_after_discount;
-                this.data.Tax = 0;
-                this.data.price = p.price;
-                let total = this.data.quantity * this.data.price;
-                this.data.Subtotal = total-this.data.discount;
-                this.orginalPrice=this.data.price;
+              
+                store.data.discount=p.price-p.price_after_discount;
+                store.priceAfterDiscount=p.price_after_discount;
+                store.data.Tax = 0;
+                store.countTax=0;
+                store.data.price = p.price;
+                let total = store.data.quantity * store.data.price;
+                store.data.Subtotal = total-store.data.discount;
+                this.orginalPrice=store.data.price;
+               
               } else {
                 
-             this.data.Tax =localStorage.getItem("tax");
-             this.data.discount=p.price-p.price_after_discount;
-                store.countTax=this.data.Tax;
-                this.data.price = p.price;
-                let total = this.data.quantity * this.data.price;
-              let totalwithTax=  total*( this.data.Tax/100);              
-                this.data.Subtotal = total + totalwithTax-this.data.discount;
+                store.data.Tax =localStorage.getItem("tax");
+                store.data.discount=p.price-p.price_after_discount;
+                store.countTax=store.data.Tax;
+                store.data.price = p.price;
+                let total = store.data.quantity * store.data.price;
+              let totalwithTax=  total*( store.data.Tax/100);              
+              store.data.Subtotal = total + totalwithTax-store.data.discount;
              store.countTax=p.price_after_discount*localStorage.getItem("tax")/100;
-                this.orginalPrice=this.data.price;
+                this.orginalPrice=store.data.price;
 
               }
             }
@@ -333,57 +310,38 @@ export default {
 
       if (e.target.value == "" || e.target.value == 0) {
        
-        qty = this.data.quantity;
+        qty = store.data.quantity;
       } else {
         qty = e.target.value;
   
       }
 
-      if (this.data.Tax == 0) {
-        let total = qty * this.data.price;
+      if (store.data.Tax == 0) {
+        let total = qty * store.data.price;
         this.orginalPrice=total;
-        if (this.data.discount == 0.0) {
-          this.data.Subtotal = total - this.data.discount ;
+        if (store.data.discount == 0.0) {
+          store.data.Subtotal = total - store.data.discount ;
        
         } else {
-          this.data.Subtotal = total - this.data.discount;
+          store.data.Subtotal = total - store.data.discount;
         }
       } else {
-        let total = qty * this.data.price;
+        let total = qty * store.data.price;
         this.orginalPrice=total;
               let totalwithTax=  total*(store.countTax/100 );
-        if (this.data.discount == 0.0) {
+        if (store.data.discount == 0.0) {
               
-                this.data.Subtotal = total + totalwithTax-this.data.discount;
+          store.data.Subtotal = total + totalwithTax-store.data.discount;
         
         } else {
-          this.data.Subtotal = total + totalwithTax-this.data.discount;
+          store.data.Subtotal = total + totalwithTax-store.data.discount;
           
-          //this.data.Subtotal = (total * this.data.discount) / 100;
+         
         }
       }
     },
 
-    // onPrice(e) {
-    //   let price = e.target.value;
-
-    //   let total = (this.data.quantity * price * this.data.Tax) / 100;
-    //   if (this.data.discount == 0.0) {
-    //     this.data.Subtotal = total + this.data.discount / 100;
-    //   } else {
-    //     this.data.Subtotal = (total * this.data.discount) / 100;
-    //   }
-    // },
-    // onDiscount(e) {
-    //   let discount = e.target.value;
-    //   let qty = this.data.quantity;
-    //   let total = qty * this.data.price;
-    //   if (this.data.discount == 0.0) {
-    //     this.data.Subtotal = total + discount;
-    //   } else {
-    //     this.data.Subtotal = (total * discount) / 100;
-    //   }
-    // },
+   
   },
 async mounted(){
   try {

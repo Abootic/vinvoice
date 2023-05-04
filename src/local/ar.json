@@ -15,6 +15,11 @@
     "price":"السعر",
     "Quantity":"الكمية",
     "discount":"التخفيظ",
+    "invoiceType":"نوع الفتورة",
+    "pay_method":"طريقة الدفع",
+    "is_paidwithouttax":"ضريبة مبصطة",
+    "is_paidwithtax":"ضريبية",
+    
     "afterdiscount":"السعر بعد التخفيظ",
 
     "total":"الاجمالي",
@@ -23,7 +28,9 @@
     "invoicesummary":"ملخص الفاتورة",
     "download":"تحميل",
     "print":"طباعة",
-    "createnew":"انشاء فاتورة جديد"
+    "createnew":"انشاء فاتورة جديد",
+    "note":"ملاحظات",
+    "addItem":"اضافة عنصر"
 
     
 }

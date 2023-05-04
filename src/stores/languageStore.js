@@ -21,10 +21,8 @@ if(this.isLang){
 this.isLang=!this.isLang;
 this.$i18n.global.locale=this.language;
 
-         
-        
-         console.log("ddddddddddddddd  "+this.language);
-      //  this.i18n.locale = this.language;
+         window.localStorage.setItem("lang",this.language);
+       
       },
       TRANSLATE(message) {
         return this.$i18n.global.t(message)
@@ -36,7 +34,7 @@ this.$i18n.global.locale=this.language;
       getLang(){
         const i18n= createI18n({
           legacy:false,
-         locale:this.language,
+         locale:window.localStorage.getItem("lang")==null?"en":this.language,
           fallbackLocale:'en',
          // globalInjection: true,
           messages: {

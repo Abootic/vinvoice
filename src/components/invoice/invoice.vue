@@ -20,18 +20,19 @@
                           <span>{{ langStore.TRANSLATE("from") }}</span>
                         </div>
                       </div>
-                      <div class="row">
-                        <div class="col">
+                      <div class="row" style="justify-content: space-between;">
+                        <div class="col-4">
                           <div class="col-sm-3">
                             <img src="https://icons.veryicon.com/png/o/internet--web/55-common-web-icons/person-4.png"
                               jsaction="VQAsE" class="r48jcc pT0Scc iPVvYb person-icon"
-                              alt="person Vector Icons free download in SVG, PNG Format" jsname="kn3ccd" />
+                              alt="person Vector Icons free download in SVG, PNG Format"  />
                           </div>
                         </div>
-                        <div class="col">
-                          <div class="col dir-sm">
-                            <select @change="onSelectCustomer($event)" class="form-select mb-2 text-option"
-                              aria-label=".form-select-lg example">
+                        <div class="col-2"></div>
+                        <div class="col-6">
+                          <div class="col ">
+                            <select @change="onSelectCustomer($event)" class="form-select mb-2 "
+                              aria-label=".form-select-lg ">
                               <option v-for="(customer, key) in customers" :key="key" :value="customer.id">
                                 {{ customer.name }}
                               </option>
@@ -48,23 +49,26 @@
                     <button type="button" class="btn dash-board" data-bs-toggle="modal" data-bs-target="#exampleModal"
                       data-bs-whatever="@mdo">
                       <div class="row">
-                        <div class="col">
-                          <div class="col-sm-3">
+                      
+                          <div class="col-3">
                             <a v-on:click="callModal()">
                               <img class="plus-icon" alt="Image result for plus icon svg" id="dimg_3"
                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAB7CAMAAABjGQ9NAAAAZlBMVEX///8AAADd3d16enp/f3/h4eEGBgaDg4Pk5OSLi4vCwsJaWlrPz8/W1tZycnILCwuTk5M6Ojq6urrq6ur5+fllZWVsbGzIyMiioqJPT09fX18YGBghISFBQUGsrKzy8vIzMzMpKSmLFk5YAAACjUlEQVRoge2b6bKiMBBGibKvsirgxvu/5ARwbjlI2iqtL61zc34LpwIS+msSy3oVp/CiPO+Conz5FC8StuKHLtZp9jvxD9tKmzruxYJc14WPl2bJUY/cX1ELcdJx2avTqlvYGtzndbUQCVxd5Sp3CneHKrXILmi3rXSLAu2+qt07tPuodqNveJmp3ZFxQ/AJd8foro0bguOq3Q2jGz23sLrVarFFu4lxo90bxnEb9yPoStW49bsTwu0ZN4S1/PuXwLj/O/f+Q93oLMjpVkd/4+ZwH77VXZWlL3Ekm5kkSWLJXhJOBIS7O+wkwYjnebZkO5KmTVPXURS1bdvsipVuVBXa1z6bcF2iCH8bt160vKuzsmUHoLkfu6PokaIYNj9qarLCkCVsaiH6ud++Qf6zlMxNqfb5DxGM3VdlPxxMbpHNWSwJWQRhOVgHNndj1WzuwRrY3K7F8nCzuwdrYHPXVsPm5nzGYjJQQ7nKOVVnwXLPWboLHnU7vUMjDrU7V03lwwoCDexvNVNCfAMBq2XVNOg1n5y7Gvmic4bJz4ulEXENzSKuO0ee/mqHK4syLsWukYlJ5qa6bpo0nbLUGKpktpoy1hi2Dh1hCObINoa3McTJLHdLdWPAG4NeWb61GISagsN3Tvzh7p1xf5R7//zwr3VT/RZON3rpoHHrd3uEG7147re6iaVzYvP8cOP+MvfWuD/J7TrPD0e5BdqdMo6b002ERribaL9mvnFDIDIw3E00pTL0No/f6ibmliNYTWXBK9pNdF/hG2su6h4kOvoTNzzHb2ZS9vrPcLWyUuXcw4WeUGfKta01urYrlg+fWHp9OyWrRcXY6bngN+K7d2mLf7AXlEXQ5XnkFa9XaX8ACxAwIMVyyf0AAAAASUVORK5CYII="
                                 data-atf="1" data-frt="0" />
                             </a>
                           </div>
-                          <div class="col-sm-3">
+                          <div class="col-3">
                             <a v-on:click="onihowLoginmodel()">
                               <img class="login-icon" alt="Image result for plus icon svg" id="dimg_3"
                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAB7CAMAAABjGQ9NAAAAZlBMVEX///8AAADd3d16enp/f3/h4eEGBgaDg4Pk5OSLi4vCwsJaWlrPz8/W1tZycnILCwuTk5M6Ojq6urrq6ur5+fllZWVsbGzIyMiioqJPT09fX18YGBghISFBQUGsrKzy8vIzMzMpKSmLFk5YAAACjUlEQVRoge2b6bKiMBBGibKvsirgxvu/5ARwbjlI2iqtL61zc34LpwIS+msSy3oVp/CiPO+Conz5FC8StuKHLtZp9jvxD9tKmzruxYJc14WPl2bJUY/cX1ELcdJx2avTqlvYGtzndbUQCVxd5Sp3CneHKrXILmi3rXSLAu2+qt07tPuodqNveJmp3ZFxQ/AJd8foro0bguOq3Q2jGz23sLrVarFFu4lxo90bxnEb9yPoStW49bsTwu0ZN4S1/PuXwLj/O/f+Q93oLMjpVkd/4+ZwH77VXZWlL3Ekm5kkSWLJXhJOBIS7O+wkwYjnebZkO5KmTVPXURS1bdvsipVuVBXa1z6bcF2iCH8bt160vKuzsmUHoLkfu6PokaIYNj9qarLCkCVsaiH6ud++Qf6zlMxNqfb5DxGM3VdlPxxMbpHNWSwJWQRhOVgHNndj1WzuwRrY3K7F8nCzuwdrYHPXVsPm5nzGYjJQQ7nKOVVnwXLPWboLHnU7vUMjDrU7V03lwwoCDexvNVNCfAMBq2XVNOg1n5y7Gvmic4bJz4ulEXENzSKuO0ee/mqHK4syLsWukYlJ5qa6bpo0nbLUGKpktpoy1hi2Dh1hCObINoa3McTJLHdLdWPAG4NeWb61GISagsN3Tvzh7p1xf5R7//zwr3VT/RZON3rpoHHrd3uEG7147re6iaVzYvP8cOP+MvfWuD/J7TrPD0e5BdqdMo6b002ERribaL9mvnFDIDIw3E00pTL0No/f6ibmliNYTWXBK9pNdF/hG2su6h4kOvoTNzzHb2ZS9vrPcLWyUuXcw4WeUGfKta01urYrlg+fWHp9OyWrRcXY6bngN+K7d2mLf7AXlEXQ5XnkFa9XaX8ACxAwIMVyyf0AAAAASUVORK5CYII="
                                 data-atf="1" data-frt="0" />
                             </a>
                           </div>
-                        </div>
-                        <div class="col text-option">{{   langStore.TRANSLATE("customerdetails") }}</div>
+                          <div class="col-6">
+                            <div class="text-option">{{   langStore.TRANSLATE("customerdetails") }}</div>
+                          </div>
+                        
+                       
                       </div>
                     </button>
                   </div>
@@ -87,6 +91,21 @@
                 <!---------------------------------- invoicesummery ------------------------------->
                 <invoiceSummery />
               </div>
+              <div class="note" id="note-id">
+                <div class="note-text mt-2" >
+                  <div>{{ langStore.TRANSLATE("note") }}</div>
+                </div>
+                <div class="note-input">
+                  <input
+             
+                type="text"
+                v-model="note"
+                class="form-control"
+                
+              />
+                </div>
+              </div>
+              
               <!---------------------------------- btn ------------------------------->
               <div class="btn-group" role="group" aria-label="Basic example" id="s-section" >
                 <button type="button" id="add-orderId" class="btn m-2 btn-success"  v-if="constrctBtn" @click="onSave($event)">
@@ -124,7 +143,7 @@
 .person-icon {
   max-width: 512px;
   height: 40px;
-  margin-left: -56%;
+ 
   width: 64px;
 }
 
@@ -137,7 +156,7 @@
   max-width: 512px;
   height: 36px;
   /* margin-left: -17%; */
-  margin-left: -78%;
+  /* margin-left: -78%; */
   width: 51px;
 }
 
@@ -184,6 +203,21 @@
   outline: 0;
   transition: opacity 0.15s linear;
 }
+.note{
+
+  display: flex;
+    justify-content:start;
+    align-items: start;
+}
+.note-text{
+  margin: 5px;
+
+}
+.note-input{
+  margin: 5px;
+
+  width: 100%;
+}
 </style>
 
 <script>
@@ -197,7 +231,7 @@ import invoiceSummery from "./InvoiceSummery.vue";
 import { useTaskStore } from "../../stores/TaskStore";
 import { useLanguageStore } from "../../stores/languageStore";
 
-// import * as FileSaver from 'file-saver';
+
 
 export default {
   name: "invoice-card",
@@ -213,7 +247,7 @@ export default {
   setup() {
     const taskStore = useTaskStore();
     const langStore=useLanguageStore();
-    
+   
     const showForm = () => {
       taskStore.onInvoiceFormShow();
       
@@ -240,6 +274,7 @@ export default {
       invoiceList: [0],
       deconstructBtn:false,
       constrctBtn:true,
+      note:""
     }
   },
   methods: {
@@ -287,15 +322,19 @@ export default {
         store.orderobj.paid_method="كاش";
       }
    
-      store.orderobj.order_details.forEach(a=>{
-        delete a.tax,a.cid,a.orginalPrice
-      });
+    
       let chsherId=   window.localStorage.getItem("chsherId");
+      store.orderobj.notes=this.note;
       if(chsherId!=null){
         store.orderobj.cashier_id=chsherId;
       }else{
         store.orderobj.cashier_id=309;
       }
+      store.orderobj.order_details.forEach(a=>{
+        delete a.tax,a.cid,a.orginalPrice
+      });
+    
+      console.log(JSON.stringify( store.orderobj));
        
         const p_res = await this.callApi("POST", 'https://www.kifapos.com/api/v3/add-order', store.orderobj);
         if (p_res.status === 200) {
@@ -349,12 +388,14 @@ export default {
         document.getElementById("f-section").style.direction="rtl";
         document.getElementById("s-section").style.direction="rtl";
         document.getElementById("t-section").style.direction="rtl";
+        document.getElementById("note-id").style.direction="rtl";
        
       }else{
       
         document.getElementById("f-section").style.direction="ltr";
         document.getElementById("s-section").style.direction="ltr";
         document.getElementById("t-section").style.direction="ltr";
+        document.getElementById("note-id").style.direction="ltr";
       }
  },
  

@@ -15,6 +15,10 @@
     "price":"price",
     "Quantity":"Quantity",
     "discount":"discount",
+    "invoiceType":"invoice Type",
+    "pay_method":"pay_method",
+    "is_paidwithouttax":"simplified tax",
+    "is_paidwithtax":"tax",
     "afterdiscount":"price after discount",
     "total":"total",
     "pricewithcost":"price with cost",
@@ -22,7 +26,9 @@
     "invoicesummary":"invoice summary",
     "download":"download",
     "print":"print",
-    "createnew":"create new"
+    "createnew":"create new",
+    "note":"note",
+    "addItem":"add item"
 
     
 }

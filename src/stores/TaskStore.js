@@ -16,6 +16,16 @@ export const useTaskStore =defineStore("taskStore",{
                 paid_method:"",
                 notes:"",
             },
+            data:{
+              id:0,
+      
+              name: "",
+              quantity: 1,
+              price: 1,
+              discount: 0.0,
+              Tax: 0,
+              Subtotal: 0.0,
+            },
         isInvoiceFormShow:false,
         isInvoiceFormValueShow:false,
         mainSaveBtn:false,
