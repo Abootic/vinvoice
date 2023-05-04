@@ -42,7 +42,7 @@
         </div>
       </div>
 
-      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mt-3">
         <div class="row bg-color">
           <div class="col-sm-3" style="background-color: white"></div>
           <div class="col-sm-3" style="background-color: white"></div>
