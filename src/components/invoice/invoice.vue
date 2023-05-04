@@ -33,6 +33,7 @@
                           <div class="col ">
                             <select @change="onSelectCustomer($event)" class="form-select mb-2 "
                               aria-label=".form-select-lg ">
+                              <option>{{ langStore.TRANSLATE("select") }}</option>
                               <option v-for="(customer, key) in customers" :key="key" :value="customer.id">
                                 {{ customer.name }}
                               </option>
@@ -78,7 +79,7 @@
                 <!---------------------------------- InvoiceTable ------------------------------->
                 <div class="row" id="t-section">
                   <!-- <div v-if="taskStore.isInvoiceFormValueShow" class="col-lg-8 col-mb-8 col-sm-12 col-xs-12 mt-3" style="background-color: red;"> -->
-                  <div v-if="taskStore.isInvoiceFormValueShow" class="col-lg-8 col-mb-8 col-sm-12 col-xs-12 mt-3">
+                  <div v-if="taskStore.isInvoiceFormValueShow" class="col-lg-12 col-mb-12 col-sm-12 col-xs-12 mt-3">
                     <invoicedetails v-for="(
                           invoiceList, index
                         ) in taskStore.invoiceDetailsList" :key="index" :invoiceList="invoiceList" />

@@ -12,7 +12,7 @@
 
             <div class="col-lg-10 col-mb-10 col-sm-10 mt-2" id="dropdown-wrapper">
               <div class="selected-item"  @click="isArrowVisible=!isArrowVisible">
-                <span>{{ selectedItem!=null? selectedItem.name:"Select"}}</span>
+                <span style="    font-size: 13px; font-weight: bold;">{{ selectedItem!=null? selectedItem.name:langStore.TRANSLATE("select") }}</span>
                 <svg 
                
                 class="dtp-down-icon"
@@ -431,11 +431,11 @@ align-items: center;
   margin-bottom: 10px;
   height: 40px;
   border: 1px solid #dc2020;
-
+font-size: 20px;
   border-radius: 5px;
 }
 .options {
-  width: 100%;
+  width: 120%;
 }
 ul {
   list-style: none;
