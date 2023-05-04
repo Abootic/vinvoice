@@ -354,7 +354,7 @@ export default {
       
         document.getElementById("f-section").style.direction="ltr";
         document.getElementById("s-section").style.direction="ltr";
-        document.getElementById("t-sections").style.direction="ltr";
+        document.getElementById("t-section").style.direction="ltr";
       }
  },
  

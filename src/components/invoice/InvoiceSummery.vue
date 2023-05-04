@@ -87,8 +87,7 @@
 .text-option{
     width: 7rem;
     height: 3rem;
-    position: relative;
-    left: 7rem;
+    margin-inline: 62px;
    
 }
 /*.text-title{
