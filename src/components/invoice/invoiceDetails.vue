@@ -66,6 +66,9 @@
         <!-- </div> -->
 </template>
 <style scoped>
+.table-header{
+    background-color: #dee2e6;
+}
 .icon-svg{
     max-width: 30px;
     width: 32px;

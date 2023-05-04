@@ -48,12 +48,11 @@
           <div class="col-sm-3" style="background-color: white"></div>
           <div class="col-sm-6">
             <div class="row">
-              <div class="col-sm-4 text-title mt-1">
+              <div class="col-sm-12 text-title mt-1">
                 {{ langStore.TRANSLATE("invoicesummary") }}
               </div>
 
-              <div class="col-sm-4"></div>
-              <div class="col-sm-3 text-title"></div>
+             
             </div>
           </div>
         </div>
