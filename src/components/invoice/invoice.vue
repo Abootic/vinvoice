@@ -2,8 +2,9 @@
   <section id="main-dirv">
     <main >
       <!--The Container-->
-      <button @click=" onSwitchLanguage">switch</button>
+     
       <div class="container-fluid " >
+        
         <div class="row">
           <!--The Container Insider-->
           <div class="d-grid gap-2">
@@ -12,6 +13,7 @@
               <!--Card Bodytttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt-->
               <div class="card-body d-grid gap-2" id="f-section" >
                 <div class="row">
+                  <div class="col-sm-2 mt-2"><button class="btn btn-info" @click="onSwitchLanguage">{{ langStore.TRANSLATE("changeLang") }}</button></div>
                   <!--FRom Part-->
                   <div class="col-sm-4 m-2 d-grid gap-2">
                     <div type="button" class="btn dash-board">
@@ -74,6 +76,7 @@
                     </button>
                   </div>
                   <!--To Part-->
+                 
                 </div>
 
                 <!---------------------------------- InvoiceTable ------------------------------->

@@ -29,7 +29,8 @@
     "createnew":"create new",
     "note":"note",
     "addItem":"add item",
-    "select":"select"
+    "select":"select",
+    "changeLang":"change language"
 
     
 }
