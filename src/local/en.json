@@ -29,7 +29,10 @@
     "createnew":"create new",
     "note":"note",
     "addItem":"add item",
-    "select":"select",
+    "selectCustomer":"select customer",
+    "selectPruduct":"select product",
+    "selectPayment":"select payment",
+    "selectTaxType":"select tax type",
     "changeLang":"change language"
 
     

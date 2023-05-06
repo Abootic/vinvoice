@@ -1,16 +1,16 @@
 {
      "c_customerName" :"اسم الزبون",
-    "c_newCustomer":"زبون جديد",
-    "customerdetails":"بيانات الزبون",
+    "c_newCustomer":"عميل جديد",
+    "customerdetails":"بيانات العميل",
     "c_username":"اسم المسنخدم",
-    "c_email":"البريد الالكتروني",
+    "c_email":"البريدالالكتروني",
     "c_Address":"العنوان",
     "c_TaxNumber":"الرقم الضريبي",
-    "from":"من",
+    "from":"فاتورة الى",
     "c_Phone":"رقم الهاتف",
     "saveBtn":"حقظ",
     "closeBtn":"الغاء",
-    "tax":"ضريبة مبصطة",
+    "tax":"الضريبة",
     "pname":"المنتج",
     "price":"السعر",
     "Quantity":"الكمية",
@@ -20,7 +20,7 @@
     "is_paidwithouttax":"ضريبة مبصطة",
     "is_paidwithtax":"ضريبية",
     
-    "afterdiscount":"السعر بعد التخفيظ",
+    "afterdiscount":"السعر بعدالخصم",
 
     "total":"الاجمالي",
     "pricewithcost":"السعر مع القيمة المضافة",
@@ -31,7 +31,10 @@
     "createnew":"انشاء فاتورة جديد",
     "note":"ملاحظات",
     "addItem":"اضافة عنصر",
-    "select":"اختار",
+    "selectCustomer":" اختارالعميل",
+    "selectPruduct":"اختار منتج",
+    "selectPayment":"اختار طريقة الدفع",
+    "selectTaxType":"اختار نوع الضريبة",
     "changeLang":"تغير اللغة"
 
     

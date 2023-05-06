@@ -9,11 +9,11 @@
               <div>{{ langStore.TRANSLATE("invoiceType") }}</div>
               <select
                 v-on:change="onSelectInvoiceType($event)"
-                class="form-select text-start  mt-1 mb-1"
+                class="form-select text-strat   mt-1 mb-1"
                 aria-label="Default select example"
               >
                 <!-- <option v-for="(pay_method ,key) in store.payment_methods" :key="key" :value="pay_method">{{pay_method}}</option> -->
-                <!-- <option>{{ langStore.TRANSLATE("select") }}</option> -->
+                <option>{{ langStore.TRANSLATE("selectTaxType") }}</option>
                 <option selected :value="0" >
                   {{ langStore.TRANSLATE("is_paidwithouttax") }}
                 </option>
@@ -26,9 +26,10 @@
               <div>{{ langStore.TRANSLATE("pay_method") }}</div>
               <select
                 v-on:change="onSelectPayment($event)"
-                class="form-select text-start  mt-1 mb-1"
+                class="form-select text-strat   mt-1 mb-1" 
                 aria-label="Default select example"
               >
+              <option>{{ langStore.TRANSLATE("selectPayment") }}</option>
                 <option
                   v-for="(pay_method, key) in store.payment_methods"
                   :key="key"
@@ -41,13 +42,11 @@
           </div>
         </div>
       </div>
-
-      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mt-2">
+      <div class="col-lg-3 col-md-3  col-sm-12 col-xs-12 mt-2"></div>
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mt-2">
         <div class="row bg-color">
-          <div class="col-sm-3" style="background-color: white"></div>
-          <div class="col-sm-3" style="background-color: white"></div>
-          <div class="col-sm-6">
-            <div class="row">
+          <div class="col-sm-12">
+            <div class="row" >
               <div class="col-sm-12 text-title mt-1">
                 {{ langStore.TRANSLATE("invoicesummary") }}
               </div>
@@ -56,41 +55,49 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-3" style="background-color: white"></div>
-          <div class="col-sm-3" style="background-color: white"></div>
-          <div class="col-sm-6">
-            <div class="row">
-              <div class="col-4 text-center">
+        <div class="row"  style="border: 1px solid lightgrey;">
+          <div class="col-sm-12">
+         <div class="row">
+              <div class="col-6 text-center summury-details">
+                {{ langStore.TRANSLATE("pricewithoutcost") }}
+              </div>
+            
+              <div class="col-6 text-center summury-details">
+                {{ store.orderobj.cost_without_tax }}
+              </div>
+            </div> 
+            <div class="row" >
+              <div class="col-6 text-center summury-details">
                 {{ langStore.TRANSLATE("tax") }}
               </div>
-              <div class="col-4 text-center"></div>
-              <div class="col-4 text-center">{{ store.orderobj.tax }}</div>
+              <!-- <div class="col-4 text-center"></div> -->
+              <div class="col-6 text-center summury-details">{{ store.orderobj.tax }}</div>
             </div>
+
             <div class="row">
-              <div class="col-4 text-center">
-                {{ langStore.TRANSLATE("pricewithcost") }}
+              <div class="col-6 text-center summury-details">
+                {{ langStore.TRANSLATE("discount") }}
               </div>
-              <div class="col-4 text-center"></div>
-              <div class="col-4 text-center">
-                {{ store.orderobj.cost_with_tax }}
+              <!-- <div class="col-4 text-center"></div> -->
+              <div class="col-6 text-center summury-details">
+                {{ store.discount }}
               </div>
             </div>
             <!-- <div class="row">
-              <div class="col-4 text-center">
-                {{ langStore.TRANSLATE("pricewithoutcost") }}
+              <div class="col-6 text-center">
+                {{ langStore.TRANSLATE("pricewithcost") }}
               </div>
-              <div class="col-4 text-center"></div>
-              <div class="col-4 text-center">
-                {{ store.orderobj.cost_without_tax }}
+              <div class="col-6 text-center">
+                {{ store.orderobj.cost_with_tax }}
               </div>
             </div> -->
+
             <div class="row">
-              <div class="col-4 text-center">
+              <div class="col-6 text-center summury-details">
                 {{ langStore.TRANSLATE("total") }}
               </div>
-              <div class="col-4 text-center"></div>
-              <div class="col-4 text-center">{{ store.total }}</div>
+         
+              <div class="col-6 text-center summury-details">{{ store.total }}</div>
             </div>
           </div>
         </div>
@@ -111,12 +118,9 @@
   height: 3rem;
   margin-inline: 62px;
 }
-/*.text-title{
-
-    width: 39%;
-    font-size: 88%;
-    margin-block: 17px;
-}*/
+.summury-details{
+ font-size:13px; font-weight: 555;
+}
 </style>
 <script>
 import { useLanguageStore } from "@/stores/languageStore";

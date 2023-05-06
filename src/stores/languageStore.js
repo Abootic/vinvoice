@@ -14,14 +14,18 @@ export const useLanguageStore = defineStore("languageStore",{
     actions: {
       switchLanguage() {
 if(this.isLang){
-  this.language  ='en';
+  this.language = 'en';
+  window.localStorage.setItem("lang", this.language);
+  
 }else{
-  this.language="ar";
-}
-this.isLang=!this.isLang;
-this.$i18n.global.locale=this.language;
-
-         window.localStorage.setItem("lang",this.language);
+  this.language = "ar";
+    window.localStorage.setItem("lang",this.language);
+  
+ 
+        }
+        
+        this.isLang = !this.isLang;
+        this.$i18n.global.locale = window.localStorage.getItem("lang")==null?"ar":window.localStorage.getItem("lang");      
        
       },
       TRANSLATE(message) {
@@ -34,9 +38,9 @@ this.$i18n.global.locale=this.language;
       getLang(){
         const i18n= createI18n({
           legacy:false,
-         locale:window.localStorage.getItem("lang")==null?"en":this.language,
+         locale:window.localStorage.getItem("lang")==null?"en":window.localStorage.getItem("lang"),
           fallbackLocale:'en',
-         // globalInjection: true,
+          globalInjection: true,
           messages: {
             en,
             ar

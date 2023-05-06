@@ -35,7 +35,7 @@ export const useTaskStore =defineStore("taskStore",{
     payment_methods:[],
     total:0.0,
     countTax:0,
-
+    discount:0,
     summray_tax:0,
     totalOrginalPrice:0,
 
@@ -69,20 +69,23 @@ return this.products;
      let price=0.0;
      let _tax=0;
      let orginalPrice=0.0;
+     let discount=0;
       this.orderobj.order_details.map(a=>{
      price=a.price
+     discount=a.discount
      orginalPrice+=a.orginalPrice,
      _tax+=a.tax
       });
  
+      console.log("dissssss "+discount);
   
   
    
       this.total+= price;
-    
-      this.totalOrginalPrice=orginalPrice;
+    this.discount=this.discount+discount;
+      this.totalOrginalPrice=orginalPrice-this.discount;
    
-      this.orderobj.cost_without_tax=orginalPrice;
+      this.orderobj.cost_without_tax=orginalPrice-this.discount;
      
 
      
@@ -113,6 +116,7 @@ this.isInvoiceFormValueShow=true;
     
       let _total=0;
       let _tax=0;
+      let discount=0;
     
   
  
@@ -130,7 +134,9 @@ this.isInvoiceFormValueShow=true;
 
       _total=item.price;
 
-      orginalPrice= item.orginalPrice
+      orginalPrice= item.orginalPrice;
+      discount=item.discount;
+
     }
   
       });
@@ -145,7 +151,7 @@ return item.cid!==id;
 
 this.total=this.total-_total;
 this.summray_tax=this.summray_tax-_tax;
-
+this.discount-=discount;
 
 this.orderobj.cost_with_tax=this.total;
 this.orderobj.tax=this.summray_tax;

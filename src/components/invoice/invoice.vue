@@ -18,24 +18,27 @@
                   <div class="col-sm-4 m-2 d-grid gap-2">
                     <div type="button" class="btn dash-board">
                       <div class="row">
-                        <div class="col-sm-4 text-start">
+                        <div class="col-sm-4 text-center mt-2 mb-2">
                           <span>{{ langStore.TRANSLATE("from") }}</span>
                         </div>
                       </div>
                       <div class="row" style="justify-content: space-between;">
-                        <div class="col-4">
-                          <div class="col-sm-3">
-                            <img src="https://icons.veryicon.com/png/o/internet--web/55-common-web-icons/person-4.png"
-                              jsaction="VQAsE" class="r48jcc pT0Scc iPVvYb person-icon"
-                              alt="person Vector Icons free download in SVG, PNG Format"  />
+                        <div class="col-1"></div>
+                        <div class="col-5">
+                          <div class="col-3">
+                            <a v-on:click="callModal()">
+                              <img class="plus-icon" alt="Image result for plus icon svg" id="dimg_3"
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAB7CAMAAABjGQ9NAAAAZlBMVEX///8AAADd3d16enp/f3/h4eEGBgaDg4Pk5OSLi4vCwsJaWlrPz8/W1tZycnILCwuTk5M6Ojq6urrq6ur5+fllZWVsbGzIyMiioqJPT09fX18YGBghISFBQUGsrKzy8vIzMzMpKSmLFk5YAAACjUlEQVRoge2b6bKiMBBGibKvsirgxvu/5ARwbjlI2iqtL61zc34LpwIS+msSy3oVp/CiPO+Conz5FC8StuKHLtZp9jvxD9tKmzruxYJc14WPl2bJUY/cX1ELcdJx2avTqlvYGtzndbUQCVxd5Sp3CneHKrXILmi3rXSLAu2+qt07tPuodqNveJmp3ZFxQ/AJd8foro0bguOq3Q2jGz23sLrVarFFu4lxo90bxnEb9yPoStW49bsTwu0ZN4S1/PuXwLj/O/f+Q93oLMjpVkd/4+ZwH77VXZWlL3Ekm5kkSWLJXhJOBIS7O+wkwYjnebZkO5KmTVPXURS1bdvsipVuVBXa1z6bcF2iCH8bt160vKuzsmUHoLkfu6PokaIYNj9qarLCkCVsaiH6ud++Qf6zlMxNqfb5DxGM3VdlPxxMbpHNWSwJWQRhOVgHNndj1WzuwRrY3K7F8nCzuwdrYHPXVsPm5nzGYjJQQ7nKOVVnwXLPWboLHnU7vUMjDrU7V03lwwoCDexvNVNCfAMBq2XVNOg1n5y7Gvmic4bJz4ulEXENzSKuO0ee/mqHK4syLsWukYlJ5qa6bpo0nbLUGKpktpoy1hi2Dh1hCObINoa3McTJLHdLdWPAG4NeWb61GISagsN3Tvzh7p1xf5R7//zwr3VT/RZON3rpoHHrd3uEG7147re6iaVzYvP8cOP+MvfWuD/J7TrPD0e5BdqdMo6b002ERribaL9mvnFDIDIw3E00pTL0No/f6ibmliNYTWXBK9pNdF/hG2su6h4kOvoTNzzHb2ZS9vrPcLWyUuXcw4WeUGfKta01urYrlg+fWHp9OyWrRcXY6bngN+K7d2mLf7AXlEXQ5XnkFa9XaX8ACxAwIMVyyf0AAAAASUVORK5CYII="
+                                data-atf="1" data-frt="0" />
+                            </a>
                           </div>
                         </div>
-                        <div class="col-2"></div>
+                
                         <div class="col-6">
-                          <div class="col ">
+                          <div class="col">
                             <select @change="onSelectCustomer($event)" class="form-select mb-2 "
                               aria-label=".form-select-lg ">
-                              <option>{{ langStore.TRANSLATE("select") }}</option>
+                              <option>{{ langStore.TRANSLATE("selectCustomer") }}</option>
                               <option v-for="(customer, key) in customers" :key="key" :value="customer.id">
                                 {{ customer.name }}
                               </option>
@@ -48,7 +51,7 @@
                   </div>
                   <!--FRom Part-->
                   <!--To Part-->
-                  <div class="col-sm-4 m-2 d-grid gap-2">
+                  <!-- <div class="col-sm-4 m-2 d-grid gap-2">
                     <button type="button" class="btn dash-board" data-bs-toggle="modal" data-bs-target="#exampleModal"
                       data-bs-whatever="@mdo">
                       <div class="row">
@@ -74,7 +77,7 @@
                        
                       </div>
                     </button>
-                  </div>
+                  </div> -->
                   <!--To Part-->
                  
                 </div>
@@ -144,12 +147,6 @@
   border-radius: 4px;
 }
 
-.person-icon {
-  max-width: 512px;
-  height: 40px;
- 
-  width: 64px;
-}
 
 .text-option {
   width: 119%;
@@ -337,7 +334,7 @@ export default {
         store.orderobj.cashier_id=309;
       }
       store.orderobj.order_details.forEach(a=>{
-        delete a.tax,a.cid,a.orginalPrice
+        delete a.tax,a.cid,a.orginalPrice,a.discount
       });
     
       console.log(JSON.stringify( store.orderobj));
@@ -389,8 +386,8 @@ export default {
  const langStore=useLanguageStore();
   langStore.switchLanguage();
 
- 
-      if(langStore.language=="ar"){
+  const lang= window.localStorage.getItem("lang")==null?"en":window.localStorage.getItem("lang");
+      if(lang=="ar"){
         document.getElementById("f-section").style.direction="rtl";
         document.getElementById("s-section").style.direction="rtl";
         document.getElementById("t-section").style.direction="rtl";
@@ -405,6 +402,23 @@ export default {
       }
  },
  
+
+},
+mounted(){
+ const lang= window.localStorage.getItem("lang")==null?"en":window.localStorage.getItem("lang");
+  if(lang=="ar"){
+        document.getElementById("f-section").style.direction="rtl";
+        document.getElementById("s-section").style.direction="rtl";
+        document.getElementById("t-section").style.direction="rtl";
+        document.getElementById("note-id").style.direction="rtl";
+       
+      }else{
+      
+        document.getElementById("f-section").style.direction="ltr";
+        document.getElementById("s-section").style.direction="ltr";
+        document.getElementById("t-section").style.direction="ltr";
+        document.getElementById("note-id").style.direction="ltr";
+      }
 
 },
    async   beforeMount(){
