@@ -446,17 +446,14 @@ ul {
   overflow-x: hidden;
 }
 li {
-  /* width: 100%;
-  border-bottom: 1px solid lightgray;
-  padding: 10px;
-  background-color: #ffff;
-  cursor: pointer;
-  font-size: 15px ; */
-  width: 100%;
+ 
+  width: 130%;
     border-bottom: 1px solid lightgray;
-    padding: 9px;
+    padding: 6px;
+   
     background-color: #ffff;
     cursor: pointer;
+   
     font-size: 17px;
 }
 li:hover {
