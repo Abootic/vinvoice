@@ -18,9 +18,12 @@
                   <div class="col-sm-4 m-2 d-grid gap-2">
                     <div type="button" class="btn dash-board">
                       <div class="row">
-                        <div class="col-sm-4 text-center mt-2 mb-2">
-                          <span>{{ langStore.TRANSLATE("from") }}</span>
+                       
+                        <div class="col-sm-10 text-center mt-2 mb-2">
+
+                          {{ langStore.TRANSLATE("from") }}: <span >  {{taskStore.cutomerName }}</span> 
                         </div>
+                        <div class="col-sm-2"></div>
                       </div>
                       <div class="row" style="justify-content: space-between;">
                         <div class="col-1"></div>
@@ -43,7 +46,7 @@
                                 {{ customer.name }}
                               </option>
                             </select>
-                            <span class="person-icon">  {{ cutomerName }}</span>
+                           
                           </div>
                         </div>
                       </div>
@@ -267,7 +270,7 @@ export default {
       downloadUrl:"",
       customers: [
       ],
-      cutomerName: "",
+   
       isBtnShow: false,
       isShomodel: false,
       isShowLoginmodel: false,
@@ -366,7 +369,7 @@ export default {
     const store = useTaskStore();
     store.orderobj.customer_id = e.target.value;
     
-    this.cutomerName = e.target.options[e.target.options.selectedIndex].text;
+    store.cutomerName = e.target.options[e.target.options.selectedIndex].text;
 
 
 

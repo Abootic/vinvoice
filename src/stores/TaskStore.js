@@ -38,6 +38,7 @@ export const useTaskStore =defineStore("taskStore",{
     discount:0,
     summray_tax:0,
     totalOrginalPrice:0,
+    cutomerName:"",
 
         }
     },
@@ -70,22 +71,21 @@ return this.products;
      let _tax=0;
      let orginalPrice=0.0;
      let discount=0;
-      this.orderobj.order_details.map(a=>{
-     price=a.price
-     discount=a.discount
-     orginalPrice+=a.orginalPrice,
-     _tax+=a.tax
-      });
- 
-      console.log("dissssss "+discount);
+     if(   this.orderobj.order_details.length>0){
+      console.log("dddddddddd "+JSON.stringify(this.orderobj.order_details));
+      for(let i=0;i<this.orderobj.order_details.length;i++){
+       price+=this.orderobj.order_details[i].price;
+       discount+=this.orderobj.order_details[i].discount;
+       orginalPrice+=this.orderobj.order_details[i].orginalPrice;
+       _tax+=this.orderobj.order_details[i].tax
+      }
+      this.total=price;
+      console.log("forrrrrrrrrrr  "+this.total);
+     }
   
-  
-   
-      this.total+= price;
-    this.discount=this.discount+discount;
-      this.totalOrginalPrice=orginalPrice-this.discount;
-   
-      this.orderobj.cost_without_tax=orginalPrice-this.discount;
+    this.discount=discount;
+      this.totalOrginalPrice=orginalPrice-discount;
+      this.orderobj.cost_without_tax= orginalPrice;
      
 
      
@@ -107,10 +107,50 @@ actions:{
         
      },
      addToInvoice(data){
+   
+   
+        let falg=false;
+      if(this.invoiceDetailsList.length>0){
+        let f=this.invoiceDetailsList.some(a=>a.name==data.name);
+        if(f){
+       this.invoiceDetailsList.filter(function(item){
+   
+        if(item.name===data.name){
+          console.log("ccccccccccccccccccccccccc  ");
+        }else{
+          console.log("bbbbbbbbbbbbbbbbbbbbbbb  ");
+        }
+      if(item.tax==0){
+        //totalt=0;
+          return item.name===data.name?(falg=true, 
         
-       
-this.invoiceDetailsList.push(data);
+            item.quantity+=data.quantity, 
+            item.discount+=data.discount,
+            item.Subtotal=(data.price*item.quantity-item.discount).toPrecision(4),
+           
+         
+          item.price=(item.quantity*data.price).toPrecision(4)
+           ):falg=false}else{
+           // total=0;
+            return item.name===data.name?(falg=true, 
+            
+              item.quantity+=data.quantity, 
+              item.discount+=data.discount,  
+              item.Subtotal=((data.price*item.quantity)+item.Tax-item.discount).toPrecision(4),
+            
+            item.price=(item.quantity*data.price).toPrecision(4)
+         
+             ):falg=false;
+           }
+        });}else{
+          this.invoiceDetailsList.push(data);
+        }
+        console.log("flag======= "+falg);
+
+      }else{this.invoiceDetailsList.push(data);}
+
 this.isInvoiceFormValueShow=true;
+
      },
      removeFromInvoiceList(index,id){
     
@@ -126,20 +166,15 @@ this.isInvoiceFormValueShow=true;
     return item!==index
   });
   let orginalPrice=0;
-  this.orderobj.order_details.map((item)=>{
-  
-    if(item.cid==id){
-      
-      _tax=Number(item.tax);
 
-      _total=item.price;
-
-      orginalPrice= item.orginalPrice;
-      discount=item.discount;
-
-    }
-  
-      });
+  for(let i=0;i<this.orderobj.order_details.length;i++){
+    if(this.orderobj.order_details[i].cid==id){
+      _total=this.orderobj.order_details[i].price;
+    discount=this.orderobj.order_details[i].discount;
+    orginalPrice=this.orderobj.order_details[i].orginalPrice;
+    _tax=this.orderobj.order_details[i].tax
+  }
+   }
   this.orderobj.order_details=this.orderobj.order_details.filter(function(item){
 
       
@@ -155,7 +190,8 @@ this.discount-=discount;
 
 this.orderobj.cost_with_tax=this.total;
 this.orderobj.tax=this.summray_tax;
-this.orderobj.cost_without_tax=this.totalOrginalPrice-orginalPrice;
+this.orderobj.cost_without_tax=this.total-this.summray_tax;
+console.log(orginalPrice);
   if(this.orderobj.order_details.length<=0){
    
     this.total=0;

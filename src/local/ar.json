@@ -8,7 +8,7 @@
     "c_TaxNumber":"الرقم الضريبي",
     "from":"فاتورة الى",
     "c_Phone":"رقم الهاتف",
-    "saveBtn":"حقظ",
+    "saveBtn":"حفظ",
     "closeBtn":"الغاء",
     "tax":"الضريبة",
     "pname":"المنتج",
@@ -17,14 +17,14 @@
     "discount":"الخصم",
     "invoiceType":"نوع الفتورة",
     "pay_method":"طريقة الدفع",
-    "is_paidwithouttax":"ضريبة مبصطة",
-    "is_paidwithtax":"ضريبية",
+    "is_paidwithouttax":"فاتورة ضريبة مبصطة",
+    "is_paidwithtax":" فاتورة ضريبية" ,
     
     "afterdiscount":"السعر بعدالخصم",
 
     "total":"الاجمالي",
-    "pricewithcost":"السعر مع القيمة المضافة",
-    "pricewithoutcost":"السعر بدون القيمة المضافة",
+    "pricewithcost":"السعر مع الضريبة",
+    "pricewithoutcost":"السعر بدون الضريبة",
     "invoicesummary":"ملخص الفاتورة",
     "download":"تحميل",
     "print":"طباعة",
@@ -35,7 +35,11 @@
     "selectPruduct":"اختار منتج",
     "selectPayment":"اختار طريقة الدفع",
     "selectTaxType":"اختار نوع الضريبة",
-    "changeLang":"تغير اللغة"
+    "changeLang":"تغير اللغة",
+    "invoicemerit":"استحقاق الفاتورة",
+    "paid":"مدفوعة",
+    "pend":"اجلة",
+    "selectinvoicemerit":"اختار استحقاق الفاتورة "
 
     
 }

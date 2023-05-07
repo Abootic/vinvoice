@@ -2,7 +2,7 @@
   <!--The new Added Here-->
   <div class="container-fluid co-color" style="background-color: white">
     <div class="row">
-      <div class="col-lg-6 col-mb-6 col-sm-12 col-xs-12">
+      <div class="col-lg-6 col-mb-6 col-sm-12 col-xs-12 mt-2">
         <div class="container-fluid " >
           <div class="row bg-color" >
             <div class="col-lg-6 col-mb-6 col-sm-6 col-xs-6">
@@ -42,7 +42,30 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-3  col-sm-12 col-xs-12 mt-2"></div>
+      <div class="col-lg-3 col-md-3  col-sm-12 col-xs-12 mt-2">
+        <div class="container-fluid " >
+          <div class="row bg-color" >
+            <div class="col-lg-12 col-mb-12 col-sm-12 col-xs-12">
+              <div>{{ langStore.TRANSLATE("invoicemerit") }}</div>
+              <!-- v-on:change="onSelectInvoiceType($event)" -->
+              <select
+                
+                class="form-select text-strat   mt-1 mb-1"
+                aria-label="Default select example"
+              >
+                <option>{{ langStore.TRANSLATE("selectinvoicemerit") }}</option>
+                <option selected :value="0" >
+                  {{ langStore.TRANSLATE("paid") }}
+                </option>
+                <option :value="1">
+                  {{ langStore.TRANSLATE('pend') }}
+                </option>
+              </select>
+            </div>
+         
+          </div>
+        </div>
+      </div>
       <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mt-2">
         <div class="row bg-color">
           <div class="col-sm-12">
@@ -63,7 +86,7 @@
               </div>
             
               <div class="col-6 text-center summury-details">
-                {{ store.orderobj.cost_without_tax }}
+                {{ store.orderobj.cost_without_tax.toPrecision(4) }}
               </div>
             </div> 
             <div class="row" >
@@ -97,7 +120,7 @@
                 {{ langStore.TRANSLATE("total") }}
               </div>
          
-              <div class="col-6 text-center summury-details">{{ store.total }}</div>
+              <div class="col-6 text-center summury-details">{{ store.total.toPrecision(4) }}</div>
             </div>
           </div>
         </div>

@@ -48,6 +48,7 @@
   </div>
 </template>
 <script>
+import { useTaskStore } from '@/stores/TaskStore';
 
 //import { callApi  }  from "../../common.js";
 import { useLanguageStore } from "../../stores/languageStore";
@@ -78,6 +79,7 @@ export default {
          this.$emit("close");
      },
     async create(e) {
+      const store=useTaskStore();
       e.preventDefault();
           document.getElementById("save-btn").innerHTML="<div class='spinner-border text-info'><span class='sr-only'></span></div>";
          
@@ -85,7 +87,7 @@ export default {
     
        try{
 
-       
+        store.cutomerName=this.customerData.name;
           this.disable=true;
            const res=await this.callApi("post",'https://www.kifapos.com/api/v3/create-customer',this.customerData);
     

@@ -22,7 +22,7 @@
     "afterdiscount":"price after discount",
     "total":"total",
     "pricewithcost":"price with cost",
-    "pricewithoutcost":"price without cost",
+    "pricewithoutcost":"price without tax",
     "invoicesummary":"invoice summary",
     "download":"download",
     "print":"print",
@@ -33,7 +33,11 @@
     "selectPruduct":"select product",
     "selectPayment":"select payment",
     "selectTaxType":"select tax type",
-    "changeLang":"change language"
+    "changeLang":"change language",
+    "invoicemerit":"invoice  merit ",
+    "paid":"paid",
+    "pend":"pending",
+    "selectinvoicemerit":"seclect invoice merit"
 
     
 }

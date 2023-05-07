@@ -185,23 +185,62 @@ export default {
         this.priceErr = "enter price";
       }
       else {
-let o= this.orginalPrice;
+
         let i = store.counter++;
 
         store.data.id = i;
         store.data.Tax = store.countTax;
 
         store.addToInvoice(store.data);
+        let flag=false;
+        if(store.orderobj.order_details.length>0){
+          let f=store.orderobj.order_details.some(a=>a.name==store.data.name);
+          if(f){
+          store.orderobj.order_details.filter(function(item){
+            if(item.tax==0){
+            
+              return item.name===store.data.name?(flag=true,
+            item.quantity+=store.data.quantity,
+            item.discount+=store.data.discount,
+            item.price=item.quantity*store.data.price-item.discount,
+            item.orginalPrice=item.price
+       
+            ):flag=false;
+            }else{
+              return item.name===store.data.name?(flag=true,
+            item.quantity+=store.data.quantity,
+            item.discount+=item.discount,
+            item.price=Number(item.orginalPrice*item.quantity)+Number(item.tax)-item.discount,
+            console.log("itemmmmm price "+item.price),
+       
+            item.orginalPrice=store.data.price,
+            console.log("item.orginalPrice "+item.orginalPrice)
+            ):flag=false;
+            }
+         
+          });
+        }else{ store.orderobj.order_details.push({
+          id: 89,
+          cid: i,
+          discount:store.data.discount,
+          name: store.data.name,
+          price: store.data.Subtotal,
+          orginalPrice: this.orginalPrice,
+          quantity: store.data.quantity,
+          tax: store.data.Tax,
+        });}
+         console.log(flag);
+        }else{
         store.orderobj.order_details.push({
           id: 89,
           cid: i,
           discount:store.data.discount,
           name: store.data.name,
           price: store.data.Subtotal,
-          orginalPrice: o,
+          orginalPrice: this.orginalPrice,
           quantity: store.data.quantity,
           tax: store.data.Tax,
-        });
+        });}
 
         store.mainSaveBtn = true;
         store.getInvoiceSummery;
