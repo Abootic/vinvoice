@@ -17,7 +17,7 @@
     "discount":"الخصم",
     "invoiceType":"نوع الفاتورة" ,
     "pay_method":"طريقة الدفع",
-    "is_paidwithouttax":"فاتورة ضريبية مبصطة",
+    "is_paidwithouttax":"فاتورة ضريبية مبسطة",
     "is_paidwithtax":" فاتورة ضريبية" ,
     
     "afterdiscount":"السعر بعدالخصم",

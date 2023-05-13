@@ -189,12 +189,12 @@ export default {
     },
     onSelectInvoiceType(e) {
       const store = useTaskStore();
-      //console.log(e.target.value)
-      store.orderobj.is_paid = e.target.value;
+      console.log(e.target.value)
+      store.orderobj.invoice_type = e.target.value;
     },
     onSelectInvoicePattern(e){
       const store = useTaskStore();
-      //console.log(e.target.value)
+       console.log(e.target.value)
       store.orderobj.invoice_pattern = e.target.value;
     }
     
