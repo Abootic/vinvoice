@@ -201,17 +201,23 @@ export default {
             
               return item.name===store.data.name?(flag=true,
             item.quantity+=store.data.quantity,
-            item.discount+=store.data.discount,
-            item.price=item.quantity*store.data.price-item.discount,
+            item.discount=store.data.discount,
+           item.total_discount+=store.data.discount,
+            item.price=store.data.price,
+              item.totalp=item.quantity*store.data.price-item.total_discount,
+            //  item.totalp=item.quantity*store.data.price-item.discount,
             item.orginalPrice=item.price
        
             ):flag=false;
             }else{
               return item.name===store.data.name?(flag=true,
             item.quantity+=store.data.quantity,
-            item.discount+=item.discount,
-            item.price=Number(item.orginalPrice*item.quantity)+Number(item.tax)-item.discount,
-            console.log("itemmmmm price "+item.price),
+            item.discount=store.data.discount,
+            item.total_discount+=store.data.discount,
+            item.totalp=Number(item.orginalPrice*item.quantity)+Number(item.tax)-item.total_discount,
+           // item.totalp=Number(item.orginalPrice*item.quantity)+Number(item.tax)-item.discount,
+            item.price=store.data.price,
+           
        
             item.orginalPrice=store.data.price,
             console.log("item.orginalPrice "+item.orginalPrice)
@@ -220,11 +226,13 @@ export default {
          
           });
         }else{ store.orderobj.order_details.push({
-          id: 89,
+          id: store.data.productId,
           cid: i,
           discount:store.data.discount,
+          total_discount:store.data.discount,
           name: store.data.name,
-          price: store.data.Subtotal,
+          totalp:store.data.Subtotal,
+          price: store.data.price,
           orginalPrice: this.orginalPrice,
           quantity: store.data.quantity,
           tax: store.data.Tax,
@@ -232,11 +240,13 @@ export default {
          console.log(flag);
         }else{
         store.orderobj.order_details.push({
-          id: 89,
+          id: store.data.productId,
           cid: i,
           discount:store.data.discount,
+          total_discount:store.data.discount,
           name: store.data.name,
-          price: store.data.Subtotal,
+          totalp:store.data.Subtotal,
+          price: store.data.price,
           orginalPrice: this.orginalPrice,
           quantity: store.data.quantity,
           tax: store.data.Tax,
@@ -246,7 +256,7 @@ export default {
         store.getInvoiceSummery;
 
         store.data = {
-
+          productId:0,
           name: "",
           quantity: 1,
           price: 0.0,
@@ -272,7 +282,11 @@ export default {
       if (store.productsCash.length > 0) {
         store.productsCash.map((a) => {
           a.map((p) => {
+          
+          
             if (p.id == item.id) {
+              store.data.productId=p.id;
+             console.log("taxxxxxxxxxxxxxxx  "+p.apply_vat);
               if (p.apply_vat == 0) {
 
                 store.data.discount = p.price - p.price_after_discount;
@@ -289,12 +303,14 @@ export default {
                 store.data.Tax = localStorage.getItem("tax");
                 store.data.discount = p.price - p.price_after_discount;
                 store.countTax = store.data.Tax;
+               
                 store.data.price = p.price;
                 let total = store.data.quantity * store.data.price;
                 let totalwithTax = total * (store.data.Tax / 100);
                 store.data.Subtotal = total + totalwithTax - store.data.discount;
-                store.countTax = p.price_after_discount * localStorage.getItem("tax") / 100;
+                store.countTax = p.price_after_discount * (localStorage.getItem("tax") / 100);
                 this.orginalPrice = store.data.price;
+                console.log( store.countTax);
 
               }
             }

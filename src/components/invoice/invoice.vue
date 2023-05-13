@@ -80,7 +80,7 @@
                        
                       </div>
                     </button>
-                  </div> -->
+                  </div>  -->
                   <!--To Part-->
                  
                 </div>
@@ -294,6 +294,8 @@ export default {
             }
           }
 
+        }else if(c_res.status==401){
+alert(c_res["data"]["message"]);
         }
       } catch (e) {
 
@@ -337,10 +339,21 @@ export default {
         store.orderobj.cashier_id=309;
       }
       store.orderobj.order_details.forEach(a=>{
-        delete a.tax,a.cid,a.orginalPrice,a.discount
+        delete a.tax,
+        delete a.cid
+       
+       
+      });
+      store.orderobj.order_details.map(a=>{
+      
+        delete a.orginalPrice,
+        delete a.totalp,
+        delete a.total_discount
+
+        
       });
     
-      console.log(JSON.stringify( store.orderobj));
+      //console.log(JSON.stringify( store.orderobj));
        
         const p_res = await this.callApi("POST", 'https://www.kifapos.com/api/v3/add-order', store.orderobj);
         if (p_res.status === 200) {

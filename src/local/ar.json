@@ -15,9 +15,9 @@
     "price":"السعر",
     "Quantity":"الكمية",
     "discount":"الخصم",
-    "invoiceType":"نوع الفتورة",
+    "invoiceType":"نوع الفاتورة" ,
     "pay_method":"طريقة الدفع",
-    "is_paidwithouttax":"فاتورة ضريبة مبصطة",
+    "is_paidwithouttax":"فاتورة ضريبية مبصطة",
     "is_paidwithtax":" فاتورة ضريبية" ,
     
     "afterdiscount":"السعر بعدالخصم",
@@ -34,11 +34,11 @@
     "selectCustomer":" اختارالعميل",
     "selectPruduct":"اختار منتج",
     "selectPayment":"اختار طريقة الدفع",
-    "selectTaxType":"اختار نوع الضريبة",
+    "selectTaxType":"اختار نوع الفاتورة",
     "changeLang":"تغير اللغة",
     "invoicemerit":"استحقاق الفاتورة",
     "paid":"مدفوعة",
-    "pend":"اجلة",
+    "pend":" اجلة -تعليق السعر",
     "selectinvoicemerit":"اختار استحقاق الفاتورة "
 
     

@@ -15,10 +15,11 @@ export const useTaskStore =defineStore("taskStore",{
                 order_details:[],
                 paid_method:"",
                 notes:"",
+                invoice_pattern:0
             },
             data:{
               id:0,
-      
+              productId:0,
               name: "",
               quantity: 1,
               price: 1,
@@ -74,13 +75,15 @@ return this.products;
      if(   this.orderobj.order_details.length>0){
       console.log("dddddddddd "+JSON.stringify(this.orderobj.order_details));
       for(let i=0;i<this.orderobj.order_details.length;i++){
-       price+=this.orderobj.order_details[i].price;
-       discount+=this.orderobj.order_details[i].discount;
+       price+=this.orderobj.order_details[i].totalp;
+       //price+=this.orderobj.order_details[i].price;
+      // discount+=this.orderobj.order_details[i].discount;
+       discount+= Number(this.orderobj.order_details[i].total_discount);
        orginalPrice+=this.orderobj.order_details[i].orginalPrice;
        _tax+=this.orderobj.order_details[i].tax
       }
       this.total=price;
-      console.log("forrrrrrrrrrr  "+this.total);
+     // console.log("forrrrrrrrrrr  "+this.total);
      }
   
     this.discount=discount;
@@ -169,8 +172,10 @@ this.isInvoiceFormValueShow=true;
 
   for(let i=0;i<this.orderobj.order_details.length;i++){
     if(this.orderobj.order_details[i].cid==id){
-      _total=this.orderobj.order_details[i].price;
-    discount=this.orderobj.order_details[i].discount;
+     // _total=this.orderobj.order_details[i].price;
+     _total=this.orderobj.order_details[i].totalp;
+    discount=this.orderobj.order_details[i].total_discount;
+    //discount=this.orderobj.order_details[i].discount;
     orginalPrice=this.orderobj.order_details[i].orginalPrice;
     _tax=this.orderobj.order_details[i].tax
   }

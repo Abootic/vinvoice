@@ -2,19 +2,19 @@
   <!--The new Added Here-->
   <div class="container-fluid co-color" style="background-color: white">
     <div class="row">
-      <div class="col-lg-6 col-mb-6 col-sm-12 col-xs-12 mt-2">
+      <div class="col-lg-6 col-mb-6 col-sm-6 col-xs-12 mt-2">
         <div class="container-fluid " >
           <div class="row bg-color" >
             <div class="col-lg-6 col-mb-6 col-sm-6 col-xs-6">
               <div>{{ langStore.TRANSLATE("invoiceType") }}</div>
               <select
-                v-on:change="onSelectInvoiceType($event)"
+                v-on:change="onSelectInvoicePattern($event)"
                 class="form-select text-strat   mt-1 mb-1"
                 aria-label="Default select example"
               >
-                <!-- <option v-for="(pay_method ,key) in store.payment_methods" :key="key" :value="pay_method">{{pay_method}}</option> -->
+                
                 <option>{{ langStore.TRANSLATE("selectTaxType") }}</option>
-                <option selected :value="0" >
+                <option :value="0" >
                   {{ langStore.TRANSLATE("is_paidwithouttax") }}
                 </option>
                 <option :value="1">
@@ -49,17 +49,20 @@
               <div>{{ langStore.TRANSLATE("invoicemerit") }}</div>
               <!-- v-on:change="onSelectInvoiceType($event)" -->
               <select
-                
+           v-on:change="onSelectInvoiceType($event)" 
                 class="form-select text-strat   mt-1 mb-1"
                 aria-label="Default select example"
               >
                 <option>{{ langStore.TRANSLATE("selectinvoicemerit") }}</option>
-                <option selected :value="0" >
+                <option :value="0" >
                   {{ langStore.TRANSLATE("paid") }}
                 </option>
                 <option :value="1">
                   {{ langStore.TRANSLATE('pend') }}
                 </option>
+                <!-- <option :value="3">
+                  {{ langStore.TRANSLATE('returned') }}
+                </option> -->
               </select>
             </div>
          
@@ -176,7 +179,7 @@ export default {
           }
         }
       } catch (e) {
-        console.log(e.response);
+        /////console.log(e.response);
       }
     },
     /////// onSelectPayment to select payment methode
@@ -186,9 +189,14 @@ export default {
     },
     onSelectInvoiceType(e) {
       const store = useTaskStore();
-      console.log(e.target.value)
+      //console.log(e.target.value)
       store.orderobj.is_paid = e.target.value;
     },
+    onSelectInvoicePattern(e){
+      const store = useTaskStore();
+      //console.log(e.target.value)
+      store.orderobj.invoice_pattern = e.target.value;
+    }
     
   },
   beforeMount() {
