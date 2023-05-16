@@ -219,8 +219,8 @@ export default {
             item.price=store.data.price,
            
        
-            item.orginalPrice=store.data.price,
-            console.log("item.orginalPrice "+item.orginalPrice)
+            item.orginalPrice=store.data.price
+         
             ):flag=false;
             }
          
@@ -286,7 +286,7 @@ export default {
           
             if (p.id == item.id) {
               store.data.productId=p.id;
-             console.log("taxxxxxxxxxxxxxxx  "+p.apply_vat);
+          //   console.log("taxxxxxxxxxxxxxxx  "+p.apply_vat);
               if (p.apply_vat == 0) {
 
                 store.data.discount = p.price - p.price_after_discount;
@@ -310,7 +310,7 @@ export default {
                 store.data.Subtotal = total + totalwithTax - store.data.discount;
                 store.countTax = p.price_after_discount * (localStorage.getItem("tax") / 100);
                 this.orginalPrice = store.data.price;
-                console.log( store.countTax);
+                //console.log( store.countTax);
 
               }
             }
@@ -383,7 +383,7 @@ export default {
         }
       }
     } catch (e) {
-      console.log(e);
+    ////////  console.log(e);
     }
   },
   beforeMount() {

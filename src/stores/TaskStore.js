@@ -16,7 +16,7 @@ export const useTaskStore =defineStore("taskStore",{
                 order_details:[],
                 paid_method:"",
                 notes:"",
-                invoice_pattern:0
+                invoice_pattern:""
             },
             data:{
               id:0,

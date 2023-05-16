@@ -54,10 +54,10 @@
                 aria-label="Default select example"
               >
                 <!-- <option>{{ langStore.TRANSLATE("selectinvoicemerit") }}</option> -->
-                <option :value="0" >
+                <option :value="1" >
                   {{ langStore.TRANSLATE("paid") }}
                 </option>
-                <option :value="1">
+                <option :value="0">
                   {{ langStore.TRANSLATE('pend') }}
                 </option>
                 <!-- <option :value="3">
@@ -189,12 +189,11 @@ export default {
     },
     onSelectInvoiceType(e) {
       const store = useTaskStore();
-      console.log(e.target.value)
       store.orderobj.invoice_type = e.target.value;
+      store.orderobj.is_paid = e.target.value;
     },
     onSelectInvoicePattern(e){
       const store = useTaskStore();
-       console.log(e.target.value)
       store.orderobj.invoice_pattern = e.target.value;
     }
     

@@ -362,11 +362,15 @@ export default {
             store.orderobj.paid_method = "كاش";
           }
           if (store.orderobj.is_paid == "") {
-            store.orderobj.is_paid = 0;
+            store.orderobj.is_paid = 1;
           }
           if (store.orderobj.invoice_type == "") {
             store.orderobj.invoice_type = 0;
           }
+          if (store.orderobj.invoice_pattern == "") {
+            store.orderobj.invoice_type = 0;
+          }
+
 
           let chsherId = window.localStorage.getItem("chsherId");
           store.orderobj.notes = this.note;
@@ -382,7 +386,7 @@ export default {
             delete a.orginalPrice, delete a.totalp, delete a.total_discount;
           });
 
-          //console.log(JSON.stringify( store.orderobj));
+       
 
           const p_res = await this.callApi(
             "POST",
@@ -401,7 +405,7 @@ export default {
           }
         } catch (e) {
           document.getElementById("add-orderId").innerHTML = "save";
-          console.log(e.response);
+        // console.log(e.response);
         }
       } else {
         alert("must choose at least one item ");
