@@ -15,8 +15,8 @@
               <div class="card-body d-grid gap-2" id="f-section">
                 <div class="row">
                   <div class="col-sm-2 mt-2">
-                    <button class="btn btn-info" 
-                    style="color: #fff; font-weight: bold; font-family: system-ui;"
+                    <button class="btn btn" 
+                    style="background-color: #01468B;color: #fff; font-weight: bold; font-family: system-ui;"
                     @click="onSwitchLanguage">
                       {{ langStore.TRANSLATE("changeLang") }}
                     </button>
