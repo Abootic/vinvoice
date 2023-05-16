@@ -1,10 +1,11 @@
 <template>
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+ 
+  <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import { useLanguageStore } from "./stores/languageStore"
+import {useLanguageStore} from "./stores/languageStore"
 
 export default {
   name: 'App',
@@ -12,14 +13,14 @@ export default {
   components: {
     HelloWorld
   },
-  setup() {
-
-    const lStore = useLanguageStore();
-    lStore.$i18n = lStore.getLang;
-
-    return { lStore };
+  setup(){
+    
+    const lStore=useLanguageStore();
+  lStore.$i18n= lStore.getLang;
+ 
+    return {lStore};
   },
-
+ 
 }
 </script>
 

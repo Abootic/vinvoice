@@ -100,7 +100,7 @@
 
         <div class="col-12 mt-3 mb-3">
           <div class="row">
-            <button type="submit" class="btn btn-info col-12 mt-3 mb-3">
+            <button type="submit" class="btn btn-info col-12 mt-3 mb-3" style="color: #fff; font-weight: bold; font-family: system-ui;">
               <span>{{ langStore.TRANSLATE("addItem") }}</span>
             </button>
 

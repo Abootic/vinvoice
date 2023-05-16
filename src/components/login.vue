@@ -81,6 +81,7 @@
                
                 this.$emit("closeLogin");
                  window.localStorage.setItem("token",res["data"]["data"]["token"]);
+                 window.localStorage.setItem("chsherId",res["data"]["data"]["id"]);
                window.location.reload();
              }else{
                 document.getElementById("save-btn").innerHTML="حفظ";

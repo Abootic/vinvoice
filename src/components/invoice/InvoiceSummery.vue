@@ -13,7 +13,7 @@
                 aria-label="Default select example"
               >
                 
-                <option>{{ langStore.TRANSLATE("selectTaxType") }}</option>
+                <!-- <option>{{ langStore.TRANSLATE("selectTaxType") }}</option> -->
                 <option :value="0" >
                   {{ langStore.TRANSLATE("is_paidwithouttax") }}
                 </option>
@@ -29,7 +29,7 @@
                 class="form-select text-strat   mt-1 mb-1" 
                 aria-label="Default select example"
               >
-              <option>{{ langStore.TRANSLATE("selectPayment") }}</option>
+              <!-- <option>{{ langStore.TRANSLATE("selectPayment") }}</option> -->
                 <option
                   v-for="(pay_method, key) in store.payment_methods"
                   :key="key"
@@ -53,7 +53,7 @@
                 class="form-select text-strat   mt-1 mb-1"
                 aria-label="Default select example"
               >
-                <option>{{ langStore.TRANSLATE("selectinvoicemerit") }}</option>
+                <!-- <option>{{ langStore.TRANSLATE("selectinvoicemerit") }}</option> -->
                 <option :value="0" >
                   {{ langStore.TRANSLATE("paid") }}
                 </option>
