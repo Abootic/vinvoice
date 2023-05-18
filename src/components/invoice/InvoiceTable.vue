@@ -39,7 +39,7 @@
               {{ langStore.TRANSLATE("Quantity") }}
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
-              <input type="number" v-model="store.data.quantity" v-on:input="onCalQauntity($event)"
+              <input type="number" min="1" v-model="store.data.quantity" v-on:input="onCalQauntity($event)"
                 class="from-control table-form" />
             </div>
           </div>
@@ -331,6 +331,9 @@ export default {
         qty = e.target.value;
 
       }
+      // if( e.target.value>0){
+      //   store.data.quantity=1;
+      // }
 
       if (store.data.Tax == 0) {
         let total = qty * store.data.price;
