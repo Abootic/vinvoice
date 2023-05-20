@@ -20,7 +20,17 @@ export default {
  
     return {lStore};
   },
- 
+  mounted(){
+const url=window.location.href;
+//const url=window.location.href+"24920|B7bLNKOOlzdpWZMU527x6cEPl17qONZjpNsIzEqG";
+const listUrl=url.split("/");
+let token="";
+for(let i=0;i<listUrl.length;i++){
+token=listUrl[i];
+}
+localStorage.setItem("token",token);
+
+}
 }
 </script>
 
