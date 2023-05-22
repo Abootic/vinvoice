@@ -21,7 +21,7 @@ export default {
     return {lStore};
   },
   mounted(){
-const url=window.location.href;
+const url= decodeURI(window.location.href);
 //const url=window.location.href+"24920|B7bLNKOOlzdpWZMU527x6cEPl17qONZjpNsIzEqG";
 const listUrl=url.split("/");
 let token="";
