@@ -1,7 +1,7 @@
 <template>
   <form class="row" v-on:submit="handelSubmit($event)">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
-      <div class="row">
+      <div class="row ">
         <div id="col-start" class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
           <div class="row">
             <!-- <input    v-model="data.pid"  class="from-control table-form"> -->

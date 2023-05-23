@@ -104,6 +104,8 @@ this.nameErr="";
           const elm=this.$refs.cBtn;
           if(res.status === 200){
               document.getElementById("save-btn").innerHTML="حفظ";
+              store.orderobj.customer_id=res["data"]["data"]["id"];
+            
               this.disable=false;
               this.$emit("close");
               elm.click();

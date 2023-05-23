@@ -4,12 +4,13 @@ export default {
     methods: {
     async callApi(method, url, dataObj) {
             try {
-                let token =  window.localStorage.getItem("token");
+             
+                let token = window.localStorage.getItem("token");
               const  headers= {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
                     "Authorization":`Bearer ${token}`,
-                    "Accept-Language":window.localStorage.getItem("lang")==null?"en":window.localStorage.getItem("lang"),
+                    "Accept-Language":window.localStorage.getItem("lang")!=null?window.localStorage.getItem("lang"):"ar",
                     "Access-Control-Allow-Origin":"*"
                    };
                 return await axios({

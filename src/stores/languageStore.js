@@ -13,6 +13,7 @@ export const useLanguageStore = defineStore("languageStore",{
     }),
     actions: {
       switchLanguage() {
+      
 if(this.isLang){
   this.language = 'en';
   window.localStorage.setItem("lang", this.language);
@@ -26,12 +27,13 @@ if(this.isLang){
         
         this.isLang = !this.isLang;
         this.$i18n.global.locale = window.localStorage.getItem("lang")==null?"ar":window.localStorage.getItem("lang");      
-       
+         
       },
       TRANSLATE(message) {
         return this.$i18n.global.t(message)
       }
-
+    
+      
     },
     getters: {
 

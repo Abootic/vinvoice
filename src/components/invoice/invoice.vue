@@ -76,7 +76,7 @@
 
                 <!---------------------------------- InvoiceTable ------------------------------->
                
-                <div class="row" id="t-section">
+                <div class="row " id="t-section">
                   <!-- <div v-if="taskStore.isInvoiceFormValueShow" class="col-lg-8 col-mb-8 col-sm-12 col-xs-12 mt-3" style="background-color: red;"> -->
                   <div
                     v-if="taskStore.isInvoiceFormValueShow"
@@ -97,7 +97,7 @@
                 </div>
 
                 <!---------------------------------- invoicesummery ------------------------------->
-                <invoiceSummery />
+                <invoiceSummery  />
               </div>
               <div class="note" id="note-id">
                 <div class="note-text mt-2">
@@ -401,8 +401,10 @@ export default {
       window.location.reload();
     },
     onSwitchLanguage() {
+
       const langStore = useLanguageStore();
       langStore.switchLanguage();
+    
 
       const lang =
         window.localStorage.getItem("lang") == null
@@ -419,6 +421,9 @@ export default {
         document.getElementById("t-section").style.direction = "ltr";
         document.getElementById("note-id").style.direction = "ltr";
       }
+    setTimeout(()=>{location.reload();},3000);
+    
+    
     },
   },
   mounted() {
