@@ -9,7 +9,7 @@ export default {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
                     "Authorization":`Bearer ${token}`,
-                    "Accept-Language":"en",
+                    "Accept-Language":window.localStorage.getItem("lang")==null?"en":window.localStorage.getItem("lang"),
                     "Access-Control-Allow-Origin":"*"
                    };
                 return await axios({

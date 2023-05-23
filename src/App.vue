@@ -1,17 +1,19 @@
 <template>
  
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <invoice />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 import {useLanguageStore} from "./stores/languageStore"
+
+import invoice from "./components/invoice/invoice.vue"
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld
+    invoice
   },
   setup(){
     
@@ -21,7 +23,7 @@ export default {
     return {lStore};
   },
   mounted(){
-const url= decodeURI(window.location.href);
+const url=decodeURI(window.location.href);
 //const url=window.location.href+"24920|B7bLNKOOlzdpWZMU527x6cEPl17qONZjpNsIzEqG";
 const listUrl=url.split("/");
 let token="";

@@ -1,15 +1,15 @@
 <template>
-  <section id="main-dirv">
+  <section id="main-dirv" >
     <main>
       <!--The Container-->
 
-      <div class="container-fluid">
-        <div class="row">
+      <div class="container-fluid" >
+        <div class="row" >
           <!--The Container Insider-->
-          <div class="d-grid gap-2">
+          <div class="d-grid gap-2" >
             <!--Card-->
             <div
-              class="card bg-white shadow p-3 mb-5 bg-body-tertiary rounded dir-sm mt-5"
+              class="card bg-white shadow p-3 bg-body-tertiary rounded dir-sm "
             >
               <!--Card Bodytttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt-->
               <div class="card-body d-grid gap-2" id="f-section">
@@ -71,36 +71,7 @@
                       </div>
                     </div>
                   </div>
-                  <!--FRom Part-->
-                  <!--To Part-->
-                  <!-- <div class="col-sm-4 m-2 d-grid gap-2">
-                    <button type="button" class="btn dash-board" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                      data-bs-whatever="@mdo">
-                      <div class="row">
-                      
-                          <div class="col-3">
-                            <a v-on:click="callModal()">
-                              <img class="plus-icon" alt="Image result for plus icon svg" id="dimg_3"
-                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAB7CAMAAABjGQ9NAAAAZlBMVEX///8AAADd3d16enp/f3/h4eEGBgaDg4Pk5OSLi4vCwsJaWlrPz8/W1tZycnILCwuTk5M6Ojq6urrq6ur5+fllZWVsbGzIyMiioqJPT09fX18YGBghISFBQUGsrKzy8vIzMzMpKSmLFk5YAAACjUlEQVRoge2b6bKiMBBGibKvsirgxvu/5ARwbjlI2iqtL61zc34LpwIS+msSy3oVp/CiPO+Conz5FC8StuKHLtZp9jvxD9tKmzruxYJc14WPl2bJUY/cX1ELcdJx2avTqlvYGtzndbUQCVxd5Sp3CneHKrXILmi3rXSLAu2+qt07tPuodqNveJmp3ZFxQ/AJd8foro0bguOq3Q2jGz23sLrVarFFu4lxo90bxnEb9yPoStW49bsTwu0ZN4S1/PuXwLj/O/f+Q93oLMjpVkd/4+ZwH77VXZWlL3Ekm5kkSWLJXhJOBIS7O+wkwYjnebZkO5KmTVPXURS1bdvsipVuVBXa1z6bcF2iCH8bt160vKuzsmUHoLkfu6PokaIYNj9qarLCkCVsaiH6ud++Qf6zlMxNqfb5DxGM3VdlPxxMbpHNWSwJWQRhOVgHNndj1WzuwRrY3K7F8nCzuwdrYHPXVsPm5nzGYjJQQ7nKOVVnwXLPWboLHnU7vUMjDrU7V03lwwoCDexvNVNCfAMBq2XVNOg1n5y7Gvmic4bJz4ulEXENzSKuO0ee/mqHK4syLsWukYlJ5qa6bpo0nbLUGKpktpoy1hi2Dh1hCObINoa3McTJLHdLdWPAG4NeWb61GISagsN3Tvzh7p1xf5R7//zwr3VT/RZON3rpoHHrd3uEG7147re6iaVzYvP8cOP+MvfWuD/J7TrPD0e5BdqdMo6b002ERribaL9mvnFDIDIw3E00pTL0No/f6ibmliNYTWXBK9pNdF/hG2su6h4kOvoTNzzHb2ZS9vrPcLWyUuXcw4WeUGfKta01urYrlg+fWHp9OyWrRcXY6bngN+K7d2mLf7AXlEXQ5XnkFa9XaX8ACxAwIMVyyf0AAAAASUVORK5CYII="
-                                data-atf="1" data-frt="0" />
-                            </a>
-                          </div>
-                          <div class="col-3">
-                            <a v-on:click="onihowLoginmodel()">
-                              <img class="login-icon" alt="Image result for plus icon svg" id="dimg_3"
-                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHsAAAB7CAMAAABjGQ9NAAAAZlBMVEX///8AAADd3d16enp/f3/h4eEGBgaDg4Pk5OSLi4vCwsJaWlrPz8/W1tZycnILCwuTk5M6Ojq6urrq6ur5+fllZWVsbGzIyMiioqJPT09fX18YGBghISFBQUGsrKzy8vIzMzMpKSmLFk5YAAACjUlEQVRoge2b6bKiMBBGibKvsirgxvu/5ARwbjlI2iqtL61zc34LpwIS+msSy3oVp/CiPO+Conz5FC8StuKHLtZp9jvxD9tKmzruxYJc14WPl2bJUY/cX1ELcdJx2avTqlvYGtzndbUQCVxd5Sp3CneHKrXILmi3rXSLAu2+qt07tPuodqNveJmp3ZFxQ/AJd8foro0bguOq3Q2jGz23sLrVarFFu4lxo90bxnEb9yPoStW49bsTwu0ZN4S1/PuXwLj/O/f+Q93oLMjpVkd/4+ZwH77VXZWlL3Ekm5kkSWLJXhJOBIS7O+wkwYjnebZkO5KmTVPXURS1bdvsipVuVBXa1z6bcF2iCH8bt160vKuzsmUHoLkfu6PokaIYNj9qarLCkCVsaiH6ud++Qf6zlMxNqfb5DxGM3VdlPxxMbpHNWSwJWQRhOVgHNndj1WzuwRrY3K7F8nCzuwdrYHPXVsPm5nzGYjJQQ7nKOVVnwXLPWboLHnU7vUMjDrU7V03lwwoCDexvNVNCfAMBq2XVNOg1n5y7Gvmic4bJz4ulEXENzSKuO0ee/mqHK4syLsWukYlJ5qa6bpo0nbLUGKpktpoy1hi2Dh1hCObINoa3McTJLHdLdWPAG4NeWb61GISagsN3Tvzh7p1xf5R7//zwr3VT/RZON3rpoHHrd3uEG7147re6iaVzYvP8cOP+MvfWuD/J7TrPD0e5BdqdMo6b002ERribaL9mvnFDIDIw3E00pTL0No/f6ibmliNYTWXBK9pNdF/hG2su6h4kOvoTNzzHb2ZS9vrPcLWyUuXcw4WeUGfKta01urYrlg+fWHp9OyWrRcXY6bngN+K7d2mLf7AXlEXQ5XnkFa9XaX8ACxAwIMVyyf0AAAAASUVORK5CYII="
-                                data-atf="1" data-frt="0" />
-                            </a>
-                          </div>
-                          <div class="col-6">
-                            <div class="text-option">{{   langStore.TRANSLATE("customerdetails") }}</div>
-                          </div>
-                        
-                       
-                      </div>
-                    </button>
-                  </div>  -->
-                  <!--To Part-->
+               
                 </div>
 
                 <!---------------------------------- InvoiceTable ------------------------------->
