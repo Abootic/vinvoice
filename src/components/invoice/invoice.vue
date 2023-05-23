@@ -3,7 +3,7 @@
     <main>
       <!--The Container-->
 
-      <div class="container-fluid" >
+      <div class="container-fluid">
         <div class="row" >
           <!--The Container Insider-->
           <div class="d-grid gap-2" >
@@ -75,11 +75,12 @@
                 </div>
 
                 <!---------------------------------- InvoiceTable ------------------------------->
+               
                 <div class="row" id="t-section">
                   <!-- <div v-if="taskStore.isInvoiceFormValueShow" class="col-lg-8 col-mb-8 col-sm-12 col-xs-12 mt-3" style="background-color: red;"> -->
                   <div
                     v-if="taskStore.isInvoiceFormValueShow"
-                    class="col-lg-12 col-mb-12 col-sm-12 col-xs-12 mt-3"
+                    class="col-lg-12 col-mb-12 col-sm-12 col-xs-12 mt-3 m-2 d-grid gap-2"
                   >
                     <invoicedetails
                       v-for="(
@@ -91,7 +92,7 @@
                   </div>
 
                   <InvoiceTable
-                    class="form-table-component dash-board d-grid gap-2"
+                    class="form-table-component dash-board m-2 d-grid gap-2"
                   />
                 </div>
 

@@ -2,7 +2,7 @@
   <!--The new Added Here-->
   <div class="container-fluid co-color" style="background-color: white">
     <div class="row">
-      <div class="col-lg-6 col-mb-6 col-sm-6 col-xs-12 mt-2">
+      <div class="col-lg-6 col-mb-6 col-sm-6 col-xs-12 mt-2 d-grid gap-2">
         <div class="container-fluid " >
           <div class="row bg-color" >
             <div class="col-lg-6 col-mb-6 col-sm-6 col-xs-6">
