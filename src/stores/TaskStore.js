@@ -31,6 +31,7 @@ export const useTaskStore =defineStore("taskStore",{
         isInvoiceFormShow:false,
         isInvoiceFormValueShow:false,
         mainSaveBtn:false,
+        blockBtn:false,
     invoiceDetailsList:[],
     productsCash:[],
     products:[],

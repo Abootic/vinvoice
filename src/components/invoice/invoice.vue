@@ -8,6 +8,7 @@
           <!--The Container Insider-->
           <div class="d-grid gap-2" >
             <!--Card-->
+          
             <div
               class="card bg-white shadow p-3 bg-body-tertiary rounded dir-sm "
             >
@@ -15,8 +16,9 @@
               <div class="card-body d-grid gap-2" id="f-section">
                 <div class="row">
                   <div class="col-sm-2 mt-2">
-                    <button class="btn btn" 
-                    style="background-color: #01468B;color: #fff; font-weight: bold; font-family: system-ui;"
+                    <!-- <button @click="openLogin">login</button> -->
+                    <button class="btn btn Cbtn" 
+                  
                     @click="onSwitchLanguage">
                       {{ langStore.TRANSLATE("changeLang") }}
                     </button>
@@ -31,11 +33,9 @@
                         </div>
                         <div class="col-sm-2"></div>
                       </div>
-                      <div class="row" style="justify-content: space-between">
-                        <div class="col-1"></div>
-                        <div class="col-5">
-                          <div class="col-3">
-                            <a v-on:click="callModal()">
+                      <div class=" select-customer-container">
+                          <div class=" m-1">
+                            <button :disabled="taskStore.blockBtn" v-on:click="callModal()" class="btn">
                               <img
                                 class="plus-icon"
                                 alt="Image result for plus icon svg"
@@ -44,13 +44,10 @@
                                 data-atf="1"
                                 data-frt="0"
                               />
-                            </a>
+                            </button>
                           </div>
-                        </div>
-
-                        <div class="col-6">
-                          <div class="col">
-                            <select
+                          <div class="m-1">
+                            <select :disabled="taskStore.blockBtn"
                               @change="onSelectCustomer($event)"
                               class="form-select mb-2"
                               aria-label=".form-select-lg "
@@ -67,7 +64,7 @@
                               </option>
                             </select>
                           </div>
-                        </div>
+                       
                       </div>
                     </div>
                   </div>
@@ -122,6 +119,10 @@
                   v-if="constrctBtn"
                   @click="onSave($event)"
                 >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+                  <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                  <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
+                </svg>
                   {{ langStore.TRANSLATE("saveBtn") }}
                 </button>
                 <button
@@ -137,13 +138,25 @@
                 <a
                   type="button"
                   v-bind:href="downloadUrl"
-                  download="dd.pdf"
+                  download
                   target="_blank"
-                  class="btn m-2 btn-primary"
-                  v-if="isBtnShow"
+                  class="btn m-2 Cbtn"
+                  v-if="isBtnShow" 
                 >
-                  {{ langStore.TRANSLATE("download") }}
+              
+              
+                <div class="icons-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                </svg>
+                <span class="btn-text">
+                  {{ langStore.TRANSLATE("download") }}</span>
+                  </div>
+                
                 </a>
+                
+               
                 <!-- <button type="button" class="btn m-2 btn-info" v-if="isBtnShow">
                   {{ langStore.TRANSLATE("print") }}
                 </button> -->
@@ -305,6 +318,7 @@ export default {
             }
           }
         } else if (c_res.status == 401) {
+        // console.log(c_res["data"]["message"]);
           alert(c_res["data"]["message"]);
         }
       } catch (e) {
@@ -317,6 +331,9 @@ export default {
     },
     callModal() {
       this.isShomodel = true;
+    },
+    openLogin(){
+      this.isShowLoginmodel = true;
     },
     closeLogin() {
       this.isShowLoginmodel = false;
@@ -345,6 +362,7 @@ export default {
 
 
           let chsherId = window.localStorage.getItem("chsherId");
+       
           store.orderobj.notes = this.note;
           if (chsherId != null) {
             store.orderobj.cashier_id = chsherId;
@@ -368,6 +386,7 @@ export default {
           if (p_res.status === 200) {
             this.deconstructBtn = true;
             this.constrctBtn = false;
+            store.blockBtn=true;
             document.getElementById("add-orderId").innerHTML = "save";
 
             this.downloadUrl = p_res["data"]["data"]["invoice_link"];
@@ -397,6 +416,7 @@ export default {
       e.preventDefault();
       this.deconstructBtn = false;
       this.constrctBtn = true;
+      store.blockBtn=true;
       store.$reset();
       window.location.reload();
     },

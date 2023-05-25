@@ -8,7 +8,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 table-header text-center">{{ langStore.TRANSLATE("pname") }}</div>
 
             <div class="col-lg-12 col-md-12 col-sm-12 mt-2" id="dropdown-wrapper">
-              <div class="selected-item" @click="isArrowVisible = !isArrowVisible">
+              <div class="selected-item"  @click="isArrowVisible = !isArrowVisible">
                 <span style="    font-size: 13px; font-weight: bold;">{{ selectedItem != null ?
                   selectedItem.name : langStore.TRANSLATE("selectPruduct") }}</span>
                 <svg class="dtp-down-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -18,12 +18,12 @@
                 </svg>
               </div>
 
-              <div class="dropdown-popover" v-if="isArrowVisible">
+              <div class="dropdown-popover"  v-if="isArrowVisible">
                 <input placeholder="search" v-model="store.data.name" class="form-control search-input" />
                 <span v-if="filterComboBox.length === 0"> No data Available</span>
                 <div class="options">
                   <ul>
-                    <li @click="onSelectedItem(product)" v-for="(product, key) in filterComboBox" :key="key"
+                    <li  @click="onSelectedItem(product)" v-for="(product, key) in filterComboBox" :key="key"
                       :value="product.id">{{ product.name }}</li>
 
                   </ul>
@@ -51,7 +51,7 @@
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
               <!-- v-on:input="onPrice($event)" -->
-              <input readonly type="text" v-model="store.data.price" class="from-control table-form" />
+              <input    type="text" v-model="store.data.price" class="from-control table-form" />
             </div>
             <span class="text-danger">{{ priceErr }}</span>
           </div>
@@ -63,7 +63,7 @@
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
               <!-- v-on:input="onDiscount($event)" -->
-              <input readonly type="number" v-model="store.data.discount" class="from-control table-form" />
+              <input  type="number" v-model="store.data.discount" class="from-control table-form" />
             </div>
             <span class="text-danger">{{ discountErr }}</span>
           </div>
@@ -100,7 +100,8 @@
 
         <div class="col-12 mt-3 mb-3">
           <div class="row">
-            <button type="submit" class="btn btn col-12 mt-3 mb-3" style="background-color: #01468B;color: #fff; font-weight: bold; font-family: system-ui;">
+         
+            <button :disabled="store.blockBtn" type="submit" class="btn btn-default col-12 mt-3 mb-3 Cbtn">
               <span>{{ langStore.TRANSLATE("addItem") }}</span>
             </button>
 
@@ -189,6 +190,7 @@ export default {
         let i = store.counter++;
 
         store.data.id = i;
+    
         store.data.Tax = store.countTax;
 
         store.addToInvoice(store.data);
@@ -347,7 +349,9 @@ export default {
       } else {
         let total = qty * store.data.price;
         this.orginalPrice = total;
-        let totalwithTax = total * (store.countTax / 100);
+       
+        let totalwithTax = total *(store.countTax /100);
+        
         if (store.data.discount == 0.0) {
 
           store.data.Subtotal = total + totalwithTax - store.data.discount;
@@ -359,6 +363,7 @@ export default {
         }
       }
     },
+
 
 
   },

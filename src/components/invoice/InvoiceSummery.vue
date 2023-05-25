@@ -7,7 +7,8 @@
           <div class="row bg-color" >
             <div class="col-lg-6 col-mb-6 col-sm-6 col-xs-6">
               <div>{{ langStore.TRANSLATE("invoiceType") }}</div>
-              <select
+              <select 
+              :disabled="store.blockBtn"
                 v-on:change="onSelectInvoicePattern($event)"
                 class="form-select text-strat   mt-1 mb-1"
                 aria-label="Default select example"
@@ -25,6 +26,7 @@
             <div class="col-lg-6 col-mb-6 col-sm-6 col-xs-6">
               <div>{{ langStore.TRANSLATE("pay_method") }}</div>
               <select
+              :disabled="store.blockBtn"
                 v-on:change="onSelectPayment($event)"
                 class="form-select text-strat   mt-1 mb-1" 
                 aria-label="Default select example"
@@ -48,7 +50,7 @@
             <div class="col-lg-12 col-mb-12 col-sm-12 col-xs-12">
               <div>{{ langStore.TRANSLATE("invoicemerit") }}</div>
               <!-- v-on:change="onSelectInvoiceType($event)" -->
-              <select
+              <select :disabled="store.blockBtn"
            v-on:change="onSelectInvoiceType($event)" 
                 class="form-select text-strat   mt-1 mb-1"
                 aria-label="Default select example"

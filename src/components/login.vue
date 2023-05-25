@@ -68,20 +68,21 @@
             this.disable=true;
  
              const res=await this.callApi("post",'https://www.kifapos.com/api/v3/login',this.login,);
-             console.log("res "+res);
+           
              document.getElementById("save-btn").innerHTML="حفظ";
                 this.disable=false;
          
            // const elm=this.$refs.cBtn;
       
              if(res.status === 200){
-
+              console.log("ffffffff "+JSON.stringify( res["data"]["data"]["user"]["id"]));
                 document.getElementById("save-btn").innerHTML="حفظ";
                 this.disable=false;
-               
+                window.localStorage.setItem("token",res["data"]["data"]["token"]);
+                
+                 window.localStorage.setItem("chsherId",res["data"]["data"]["user"]["id"]);
                 this.$emit("closeLogin");
-                 window.localStorage.setItem("token",res["data"]["data"]["token"]);
-                 window.localStorage.setItem("chsherId",res["data"]["data"]["id"]);
+               
                window.location.reload();
              }else{
                 document.getElementById("save-btn").innerHTML="حفظ";

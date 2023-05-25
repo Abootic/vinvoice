@@ -22,16 +22,16 @@ export default {
  
     return {lStore};
   },
-  mounted(){
-const url=decodeURI(window.location.href);
-const listUrl=url.split("/");
-let token="";
-for(let i=0;i<listUrl.length;i++){
-token=listUrl[i];
-}
-localStorage.setItem("token",token);
+//   mounted(){
+// const url=decodeURI(window.location.href);
+// const listUrl=url.split("/");
+// let token="";
+// for(let i=0;i<listUrl.length;i++){
+// token=listUrl[i];
+// }
+// localStorage.setItem("token",token);
 
-}
+// }
 }
 </script>
 

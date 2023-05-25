@@ -49,4 +49,41 @@ body{
   
   
 }
+.Cbtn{
+  background-color: #01468B;
+  color: #fff;
+   font-weight: bold; 
+  font-family: system-ui;
+}
+.Cbtn:hover{
+  background-color: #01468B;
+  color: #fff;
+   font-weight: bold; 
+  font-family: system-ui;
+}
+.btn-disable:disabled {
+  margin-block:7px;
+
+  background-color: transparent;
+  border: 0 none ;
+  display: flex !important;
+  justify-content: center;
+  
+
+  align-items: center !important;
+}
+.select-customer-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.icons-btn{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.btn-text{
+  margin-left: 10px;
+}
 
