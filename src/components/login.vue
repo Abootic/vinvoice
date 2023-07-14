@@ -44,7 +44,7 @@
         return{
           login:{
          
-            username:"Raad-c",
+            username:"112233",
             password:"123456",
            
           },
@@ -79,7 +79,7 @@
                 document.getElementById("save-btn").innerHTML="حفظ";
                 this.disable=false;
                 window.localStorage.setItem("token",res["data"]["data"]["token"]);
-                
+                console.log("login token is "+res["data"]["data"]["token"]);
                  window.localStorage.setItem("chsherId",res["data"]["data"]["user"]["id"]);
                 this.$emit("closeLogin");
                

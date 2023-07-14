@@ -16,7 +16,7 @@
               <div class="card-body d-grid gap-2" id="f-section">
                 <div class="row">
                   <div class="col-sm-2 mt-2">
-                    <!-- <button @click="openLogin">login</button> -->
+                    <button @click="openLogin">login</button>
                     <button class="btn btn Cbtn" 
                   
                     @click="onSwitchLanguage">
