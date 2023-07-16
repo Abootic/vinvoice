@@ -140,7 +140,8 @@ export default {
       ///// end compobox
       customersName: [],
 
-
+dd:0,
+d:1,
       nameError: "",
       priceErr: "",
       discountErr: "",
@@ -192,7 +193,7 @@ export default {
         store.data.id = i;
     
         store.data.Tax = store.countTax;
-
+store.data.discount=this.d;
         store.addToInvoice(store.data);
         let flag=false;
         if(store.orderobj.order_details.length>0){
@@ -244,7 +245,8 @@ export default {
         store.orderobj.order_details.push({
           id: store.data.productId,
           cid: i,
-          discount:store.data.discount,
+         // discount:store.data.discount,
+         discount:this.d,
           total_discount:store.data.discount,
           name: store.data.name,
           totalp:store.data.Subtotal,
@@ -290,12 +292,13 @@ export default {
               store.data.productId=p.id;
           //   console.log("taxxxxxxxxxxxxxxx  "+p.apply_vat);
               if (p.apply_vat == 0) {
-
+this.dd= p.price - p.price_after_discount;
                 store.data.discount = p.price - p.price_after_discount;
                 store.priceAfterDiscount = p.price_after_discount;
                 store.data.Tax = 0;
                 store.countTax = 0;
                 store.data.price = p.price;
+
                 let total = store.data.quantity * store.data.price;
                 store.data.Subtotal = (total - store.data.discount).toPrecision(2);
                 
@@ -306,6 +309,7 @@ export default {
 
                 store.data.Tax = localStorage.getItem("tax");
                 store.data.discount = p.price - p.price_after_discount;
+                this.dd= p.price - p.price_after_discount;
                 store.countTax = store.data.Tax;
         
                 store.data.price = p.price;
@@ -360,7 +364,6 @@ export default {
        
        // let totalwithTax = total *(store.countTax /100);
         let totalwithTax = total *(store.data.Tax/100);
-        console.log("gggggggggg "+totalwithTax);
         if (store.data.discount == 0.0) {
 
           store.data.Subtotal = total + totalwithTax - store.data.discount;
@@ -368,7 +371,12 @@ export default {
         } else {
       
           store.data.Subtotal = total + totalwithTax - store.data.discount;
-
+    
+            this.d= this.dd*qty;
+            //store.data.discount=this.d;
+      
+          console.log("dddddddddd "+this.d);
+        //  store.data.discount= store.data.discount+store.data.discount;
 
 
         }
