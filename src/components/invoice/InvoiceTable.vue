@@ -297,7 +297,9 @@ export default {
                 store.countTax = 0;
                 store.data.price = p.price;
                 let total = store.data.quantity * store.data.price;
-                store.data.Subtotal = total - store.data.discount;
+                store.data.Subtotal = (total - store.data.discount).toFixed(2);
+                
+                console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxx "+store.data.Subtotal );
                 this.orginalPrice = store.data.price;
 
               } else {
@@ -308,10 +310,14 @@ export default {
         
                 store.data.price = p.price;
                 let total = store.data.quantity * store.data.price;
+                console.log("priceeeeeeee  "+total);
                 let totalwithTax = total * (store.data.Tax / 100);
-                store.data.Subtotal = total + totalwithTax - store.data.discount;
+                console.log("22222222222222222  "+totalwithTax);
+                store.data.Subtotal = (total + totalwithTax - store.data.discount).toFixed(2);
+                
                 store.countTax = p.price_after_discount * (localStorage.getItem("tax") / 100);
                 this.orginalPrice = store.data.price;
+                console.log("55555555555555555555 "+store.data.Subtotal );
                 //console.log( store.countTax);
 
               }
