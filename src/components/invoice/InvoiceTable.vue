@@ -297,7 +297,7 @@ export default {
                 store.countTax = 0;
                 store.data.price = p.price;
                 let total = store.data.quantity * store.data.price;
-                store.data.Subtotal = (total - store.data.discount).toFixed(2);
+                store.data.Subtotal = (total - store.data.discount).toPrecision(2);
                 
                 console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxx "+store.data.Subtotal );
                 this.orginalPrice = store.data.price;
@@ -313,7 +313,7 @@ export default {
                 console.log("priceeeeeeee  "+total);
                 let totalwithTax = total * (store.data.Tax / 100);
                 console.log("22222222222222222  "+totalwithTax);
-                store.data.Subtotal = (total + totalwithTax - store.data.discount).toFixed(2);
+                store.data.Subtotal = total + totalwithTax - store.data.discount;
                 
                 store.countTax = p.price_after_discount * (localStorage.getItem("tax") / 100);
                 this.orginalPrice = store.data.price;

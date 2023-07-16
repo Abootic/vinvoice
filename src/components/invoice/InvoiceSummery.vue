@@ -125,7 +125,7 @@
                 {{ langStore.TRANSLATE("total") }}
               </div>
          
-              <div class="col-6 text-center summury-details">{{ store.total.toPrecision(4) }}</div>
+              <div class="col-6 text-center summury-details">{{ store.total.toPrecision(2) }}</div>
             </div>
           </div>
         </div>
