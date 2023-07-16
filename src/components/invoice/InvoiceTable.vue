@@ -352,8 +352,9 @@ export default {
         let total = qty * store.data.price;
         this.orginalPrice = total;
        
-        let totalwithTax = total *(store.countTax /100);
-        
+       // let totalwithTax = total *(store.countTax /100);
+        let totalwithTax = total *(store.data.Tax/100);
+        console.log("gggggggggg "+totalwithTax);
         if (store.data.discount == 0.0) {
 
           store.data.Subtotal = total + totalwithTax - store.data.discount;
