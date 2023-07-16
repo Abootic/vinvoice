@@ -350,7 +350,7 @@ export default {
           store.data.Subtotal = total - store.data.discount;
 
         } else {
-          store.data.discount*=qty;
+        
           store.data.Subtotal = total - store.data.discount;
         
         }
@@ -366,7 +366,7 @@ export default {
           store.data.Subtotal = total + totalwithTax - store.data.discount;
 
         } else {
-          store.data.discount*=qty;
+      
           store.data.Subtotal = total + totalwithTax - store.data.discount;
 
 
