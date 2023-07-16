@@ -91,7 +91,7 @@
               </div>
             
               <div class="col-6 text-center summury-details">
-                {{ store.orderobj.cost_without_tax.toPrecision(2) }}
+                {{ store.orderobj.cost_without_tax.toFixed(2) }}
               </div>
             </div> 
             <div class="row" >
