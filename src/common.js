@@ -5,7 +5,7 @@ export default {
     async callApi(method, url, dataObj) {
             try {
              
-                let token = "26729|WWQHntmUWHJPFLTy7ImZ9KRyd24rRG43iR56N53n";// window.localStorage.getItem("token");
+                let token = "26690|QccIP0rjrcwTNNXJixs0ZrGUE9gMvhoRL7FAg2ph";// window.localStorage.getItem("token");
               const  headers= {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',

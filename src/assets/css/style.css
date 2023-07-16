@@ -49,6 +49,14 @@ body{
   
   
 }
+.saveBtn{
+  
+  
+    color: #fff;
+     font-weight: bold; 
+    font-family: system-ui;
+  }
+
 .Cbtn{
   background-color: #01468B;
   color: #fff;

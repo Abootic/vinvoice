@@ -16,7 +16,7 @@
               <div class="card-body d-grid gap-2" id="f-section">
                 <div class="row">
                   <div class="col-sm-2 mt-2">
-                    <button @click="openLogin">login</button>
+                    <!-- <button @click="openLogin">login</button> -->
                     <button class="btn btn Cbtn" 
                   
                     @click="onSwitchLanguage">
@@ -115,7 +115,7 @@
                 <button
                   type="button"
                   id="add-orderId"
-                  class="btn m-2 btn-success"
+                  class="btn m-2 btn-success saveBtn"
                   v-if="constrctBtn"
                   @click="onSave($event)"
                 >
@@ -346,7 +346,7 @@ export default {
       if (store.orderobj.order_details.length > 0) {
         try {
           document.getElementById("add-orderId").innerHTML =
-            "<div class='spinner-border text-info'><span class='sr-only'></span></div>";
+            "<div class='spinner-border text-light'><span class='sr-only'></span></div>";
           if (store.orderobj.paid_method == "") {
             store.orderobj.paid_method = "كاش";
           }

@@ -51,14 +51,14 @@
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
               <!-- v-on:input="onPrice($event)" -->
-              <input    type="text" v-model="store.data.price" class="from-control table-form" />
+              <input    type="text" v-model="store.data.price" v-on:input="onPrice($event)" class="from-control table-form" />
             </div>
             <span class="text-danger">{{ priceErr }}</span>
           </div>
         </div>
         <div id="col-start" class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
           <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 table-header text-center">
+            <div class="col-lg-12 col-md-12 col-sm-12 table-header text-center text-title">
               {{ langStore.TRANSLATE("discount") }}
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
@@ -70,7 +70,7 @@
         </div>
         <div id="col-start" class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
           <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 table-header text-center">
+            <div class="col-lg-12 col-md-12 col-sm-12 table-header text-center text-title">
               {{ langStore.TRANSLATE("afterdiscount") }}
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
@@ -305,7 +305,7 @@ export default {
                 store.data.Tax = localStorage.getItem("tax");
                 store.data.discount = p.price - p.price_after_discount;
                 store.countTax = store.data.Tax;
-               
+        
                 store.data.price = p.price;
                 let total = store.data.quantity * store.data.price;
                 let totalwithTax = total * (store.data.Tax / 100);
@@ -344,7 +344,9 @@ export default {
           store.data.Subtotal = total - store.data.discount;
 
         } else {
+          store.data.discount*=qty;
           store.data.Subtotal = total - store.data.discount;
+        
         }
       } else {
         let total = qty * store.data.price;
@@ -357,7 +359,9 @@ export default {
           store.data.Subtotal = total + totalwithTax - store.data.discount;
 
         } else {
+          store.data.discount*=qty;
           store.data.Subtotal = total + totalwithTax - store.data.discount;
+
 
 
         }
@@ -365,8 +369,54 @@ export default {
     },
 
 
+    onPrice(e){
+      const store = useTaskStore();
+    let ePrice=0;
+    if (e.target.value === "" || e.target.value === 0) {
+      ePrice =e.target.value;
+     
+} else {
+  ePrice=e.target.value;
 
+}
+if (store.data.Tax == 0) {
+      //  let total = store.data.quantity * store.data.price;
+        let total = store.data.quantity * ePrice;
+        this.orginalPrice = total;
+        if (store.data.discount == 0.0) {
+          store.data.Subtotal = total - store.data.discount;
+
+        } else {
+          store.data.discount*=store.data.quantity;
+          store.data.Subtotal = total - store.data.discount;
+        }
+      } else {
+       // let total = store.data.quantity * store.data.price;
+        let total = store.data.quantity * ePrice;
+        this.orginalPrice = total;
+       
+        let totalwithTax = total *(store.countTax /100);
+        
+        if (store.data.discount == 0.0) {
+
+          store.data.Subtotal = total + totalwithTax - store.data.discount;
+
+        } else {
+          store.data.discount*=store.data.quantity;
+          store.data.Subtotal = total + totalwithTax - store.data.discount;
+
+
+        }
+      }
+console.log(ePrice +"hhhhhhhhhhhhhhhhhhhhh")
   },
+  },
+  ///////////////////// onprice /////////////////////////////////
+ 
+
+  //////////////////////////// end onprice /////////////
+
+  ////////////////////////// on discount /////////////////
   async mounted() {
     try {
       const store = useTaskStore();
@@ -403,6 +453,7 @@ export default {
 <style scoped>
 .table-header {
   /* text-align: initial; */
+  font-family: system-ui;
   background-color: #dee2e6;
 }
 

@@ -28,7 +28,7 @@
               <select
               :disabled="store.blockBtn"
                 v-on:change="onSelectPayment($event)"
-                class="form-select text-strat   mt-1 mb-1" 
+                class="form-select text-strat  text-title mt-1 mb-1" 
                 aria-label="Default select example"
               >
               <!-- <option>{{ langStore.TRANSLATE("selectPayment") }}</option> -->
@@ -48,18 +48,18 @@
         <div class="container-fluid " >
           <div class="row bg-color" >
             <div class="col-lg-12 col-mb-12 col-sm-12 col-xs-12">
-              <div>{{ langStore.TRANSLATE("invoicemerit") }}</div>
+              <div class="text-title">{{ langStore.TRANSLATE("invoicemerit") }}</div>
               <!-- v-on:change="onSelectInvoiceType($event)" -->
               <select :disabled="store.blockBtn"
            v-on:change="onSelectInvoiceType($event)" 
-                class="form-select text-strat   mt-1 mb-1"
+                class="form-select text-strat text-title  mt-1 mb-1"
                 aria-label="Default select example"
               >
                 <!-- <option>{{ langStore.TRANSLATE("selectinvoicemerit") }}</option> -->
-                <option :value="1" >
+                <option :value="1"  class="text-title">
                   {{ langStore.TRANSLATE("paid") }}
                 </option>
-                <option :value="0">
+                <option :value="0"  class="text-title">
                   {{ langStore.TRANSLATE('pend') }}
                 </option>
                 <!-- <option :value="3">
@@ -75,7 +75,7 @@
         <div class="row bg-color">
           <div class="col-sm-12">
             <div class="row" >
-              <div class="col-sm-12 text-title mt-1">
+              <div class="col-sm-12 text-title mt-1  text-title">
                 {{ langStore.TRANSLATE("invoicesummary") }}
               </div>
 
@@ -86,12 +86,12 @@
         <div class="row"  style="border: 1px solid lightgrey;">
           <div class="col-sm-12">
          <div class="row">
-              <div class="col-6 text-center summury-details">
+              <div class="col-6 text-center summury-details text-title">
                 {{ langStore.TRANSLATE("pricewithoutcost") }}
               </div>
             
               <div class="col-6 text-center summury-details">
-                {{ store.orderobj.cost_without_tax.toPrecision(4) }}
+                {{ store.orderobj.cost_without_tax.toPrecision(2) }}
               </div>
             </div> 
             <div class="row" >
@@ -103,7 +103,7 @@
             </div>
 
             <div class="row">
-              <div class="col-6 text-center summury-details">
+              <div class="col-6 text-center summury-details text-title">
                 {{ langStore.TRANSLATE("discount") }}
               </div>
               <!-- <div class="col-4 text-center"></div> -->
@@ -148,6 +148,7 @@
 }
 .summury-details{
  font-size:13px; font-weight: 555;
+ font-family: system-ui;
 }
 </style>
 <script>
