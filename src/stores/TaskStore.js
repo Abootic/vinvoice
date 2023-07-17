@@ -42,7 +42,7 @@ export const useTaskStore =defineStore("taskStore",{
     summray_tax:0,
     totalOrginalPrice:0,
     cutomerName:"",
-
+allTax:0
         }
     },
 getters:{
@@ -83,8 +83,11 @@ return this.products;
        discount+= Number(this.orderobj.order_details[i].total_discount);
        orginalPrice+=this.orderobj.order_details[i].orginalPrice;
        _tax+=this.orderobj.order_details[i].tax
+       console.log("eeeeeeeeee allTax"+_tax);
+       this.allTax=_tax;
       }
       this.total=price;
+   
      // console.log("forrrrrrrrrrr  "+this.total);
      }
   

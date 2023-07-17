@@ -99,7 +99,8 @@
                 {{ langStore.TRANSLATE("tax") }}
               </div>
               <!-- <div class="col-4 text-center"></div> -->
-              <div class="col-6 text-center summury-details">{{ store.orderobj.tax }}</div>
+              <!-- <div class="col-6 text-center summury-details">{{ store.orderobj.tax }}</div> -->
+              <div class="col-6 text-center summury-details">{{ store.tt }}</div>
             </div>
 
             <div class="row">
@@ -125,7 +126,7 @@
                 {{ langStore.TRANSLATE("total") }}
               </div>
          
-              <div class="col-6 text-center summury-details">{{ store.total.toPrecision(2) }}</div>
+              <div class="col-6 text-center summury-details">{{ store.total.toFixed(2) }}</div>
             </div>
           </div>
         </div>

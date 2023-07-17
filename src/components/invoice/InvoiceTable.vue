@@ -75,7 +75,7 @@
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
               <!-- v-on:input="onDiscount($event)" -->
-              <input readonly type="number" v-model="priceAfterDiscount" class="from-control table-form" />
+              <input readonly type="number" v-model="store.priceAfterDiscount" class="from-control table-form" />
             </div>
             <span class="text-danger">{{ discountErr }}</span>
           </div>
@@ -142,6 +142,7 @@ export default {
 
 dd:0,
 d:1,
+summary_tax:1,
       nameError: "",
       priceErr: "",
       discountErr: "",
@@ -193,15 +194,23 @@ d:1,
         store.data.id = i;
     
         store.data.Tax = store.countTax;
-store.data.discount=this.d;
+       // store.allTax+=store.data.Tax;
+// store.data.discount=this.d;
+if(this.d!==0){
+  store.discount=this.d;
+}
+//store.tt=this.summary_tax;
+console.log("this.summary_tax "+this.summary_tax);
         store.addToInvoice(store.data);
+     
+       // store.allTax=   store.data.Tax +    store.allTax;
         let flag=false;
         if(store.orderobj.order_details.length>0){
           let f=store.orderobj.order_details.some(a=>a.name==store.data.name);
           if(f){
           store.orderobj.order_details.filter(function(item){
             if(item.tax==0){
-            
+             
               return item.name===store.data.name?(flag=true,
             item.quantity+=store.data.quantity,
             item.discount=store.data.discount,
@@ -258,7 +267,7 @@ store.data.discount=this.d;
 
         store.mainSaveBtn = true;
         store.getInvoiceSummery;
-
+store.discount=this.d;
         store.data = {
           productId:0,
           name: "",
@@ -310,6 +319,7 @@ this.dd= p.price - p.price_after_discount;
                 store.data.Tax = localStorage.getItem("tax");
                 store.data.discount = p.price - p.price_after_discount;
                 this.dd= p.price - p.price_after_discount;
+                store.priceAfterDiscount = p.price_after_discount;
                 store.countTax = store.data.Tax;
         
                 store.data.price = p.price;
@@ -359,20 +369,29 @@ this.dd= p.price - p.price_after_discount;
         
         }
       } else {
-        let total = qty * store.data.price;
+        let total = qty *  store.priceAfterDiscount ;
+     //   let total = qty * store.data.price;
         this.orginalPrice = total;
        
        // let totalwithTax = total *(store.countTax /100);
         let totalwithTax = total *(store.data.Tax/100);
+      
         if (store.data.discount == 0.0) {
 
           store.data.Subtotal = total + totalwithTax - store.data.discount;
 
         } else {
-      
-          store.data.Subtotal = total + totalwithTax - store.data.discount;
-    
-            this.d= this.dd*qty;
+          this.d= this.dd*qty;
+        //c  store.allTax*qty;
+          store.discount=this.d;
+          console.log("tttttttttttttttt "+totalwithTax);
+     //   this.summary_tax=totalwithTax;
+     store.tt=totalwithTax;
+          console.log("11111111111111 "+store.discount);
+        let v1=  total + totalwithTax;
+     
+        store.data.Subtotal = v1;
+         
             //store.data.discount=this.d;
       
           console.log("dddddddddd "+this.d);
@@ -380,6 +399,7 @@ this.dd= p.price - p.price_after_discount;
 
 
         }
+
       }
     },
 

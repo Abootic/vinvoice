@@ -108,6 +108,7 @@
 
 .table-header {
   background-color: #dee2e6;
+  font-family: system-ui;
 }
 .icon-svg {
   max-width: 30px;
