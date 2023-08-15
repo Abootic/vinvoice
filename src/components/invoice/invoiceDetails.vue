@@ -48,6 +48,7 @@
           {{ langStore.TRANSLATE("afterdiscount") }}
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 text-title text-center mt-2">
+          <!-- {{ invoiceList.price - invoiceList.discount }} -->
           {{ invoiceList.price - invoiceList.discount }}
         </div>
       </div>

@@ -252,10 +252,10 @@ console.log("this.store.countTax "+store.countTax);
           store.orderobj.order_details.push({
           id: store.data.productId,
           cid: i,
-          discount:store.data.discount  *store.data.quantity,
-         // discount:store.data.discount,
+          discount:store.data.discount ,
+         // total_discount:store.data.discount
         
-          total_discount:store.data.discount,
+          total_discount:store.data.discount*store.data.quantity,
           name: store.data.name,
           totalp:store.data.Subtotal,
           price: store.data.price,
@@ -387,6 +387,7 @@ store.data.priceAfterDiscount=p.price_after_discount;
       if (store.data.Tax == 0) {
         let total = qty * store.data.price;
         this.orginalPrice = total;
+        store.data.discount*=qty;
         if (store.data.discount == 0.0) {
           store.data.Subtotal = total - store.data.discount;
 
