@@ -251,7 +251,7 @@ console.log("this.summary_tax "+this.summary_tax);
          
           });
         }else{ 
-      
+    
           store.orderobj.order_details.push({
           id: store.data.productId,
           cid: i,
@@ -264,13 +264,16 @@ console.log("this.summary_tax "+this.summary_tax);
           quantity: store.data.quantity,
           tax: store.data.Tax,
           priceAfterDiscount:  store.data.priceAfterDiscount,
+          additonal:1,
         
         });}
          console.log(flag);
         }else{
          
-       
+          console.log("qqqqqqqqqq "+store.data.quantity);
+      console.log("priceeeeeeeeeee "+store.data.Subtotal);
         store.orderobj.order_details.push({
+
           id: store.data.productId,
           cid: i,
          // discount:store.data.discount,
@@ -283,6 +286,7 @@ console.log("this.summary_tax "+this.summary_tax);
           quantity: store.data.quantity,
           tax: store.data.Tax,
           priceAfterDiscount:  store.data.priceAfterDiscount,
+          additonal:0,
         });}
 
         store.mainSaveBtn = true;

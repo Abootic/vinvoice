@@ -376,6 +376,10 @@ export default {
             delete a.orginalPrice, delete a.totalp, delete a.total_discount;
           });
 
+          store.orderobj.order_details.map((a) => {
+            delete a.additonal, delete a.priceAfterDiscount;
+          });
+
        
 
           const p_res = await this.callApi(

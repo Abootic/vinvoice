@@ -81,7 +81,10 @@ return this.products;
      let discount=0;
      if(   this.orderobj.order_details.length>0){
       for(let i=0;i<this.orderobj.order_details.length;i++){
+        console.log("this.orderobj.order_details[i].additonal   "+this.orderobj.order_details[i].additonal);
+        if(this.orderobj.order_details[i].additonal==1){
       // price+=this.orderobj.order_details[i].totalp;
+
  
      p+=this.orderobj.order_details[i].priceAfterDiscount;
   
@@ -90,8 +93,15 @@ return this.products;
        console.log("LLLLLLLLLLLLLLLLLLLL0  "+p);
        _tax+=this.orderobj.order_details[i].tax*this.orderobj.order_details[i].quantity;
        
+      }else{
+        p=this.orderobj.order_details[i].priceAfterDiscount*this.orderobj.order_details[i].quantity;
+        discount=discount*this.orderobj.order_details[i].quantity;
+        _tax=this.orderobj.order_details[i].tax;
+        console.log("discount  "+this.orderobj.order_details[i].total_discount*this.orderobj.order_details[i].quantity);
+        console.log("tax  "+this.orderobj.order_details[i].tax);
+        console.log("price  "+this.orderobj.order_details[i].priceAfterDiscount*this.orderobj.order_details[i].quantity);
       }
-      
+    }
     
      }
      
