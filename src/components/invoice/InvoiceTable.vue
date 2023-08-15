@@ -142,6 +142,9 @@ export default {
 
 dd:0,
 d:1,
+cheackQ:false,
+afterP:0,
+afdisCount:0,
 summary_tax:1,
       nameError: "",
       priceErr: "",
@@ -200,7 +203,7 @@ if(this.d!==0){
   store.discount=this.d;
 }
 //store.tt=this.summary_tax;
-console.log("this.summary_tax "+this.summary_tax);
+console.log("this.store.countTax "+store.countTax);
         store.addToInvoice(store.data);
      
        // store.allTax=   store.data.Tax +    store.allTax;
@@ -208,7 +211,6 @@ console.log("this.summary_tax "+this.summary_tax);
         if(store.orderobj.order_details.length>0){
           let f=store.orderobj.order_details.some(a=>a.name==store.data.name);
           if(f){
-            
           store.orderobj.order_details.filter(function(item){
             if(item.tax==0){
              
@@ -219,7 +221,7 @@ console.log("this.summary_tax "+this.summary_tax);
            item.total_discount+=store.data.discount,
             item.price=store.data.price,
               item.totalp=item.quantity*store.data.price-item.total_discount,
-             
+            // item.tax+=item.tax,
               item.priceAfterDiscount+=store.data.priceAfterDiscount,
               console.log("============ 11111 =========================="),
             //  item.totalp=item.quantity*store.data.price-item.discount,
@@ -237,14 +239,9 @@ console.log("this.summary_tax "+this.summary_tax);
             item.totalp=Number(item.price*item.quantity),
             console.log("============ 2222222 =========================="),
             item.priceAfterDiscount+=store.data.priceAfterDiscount,
-          //  item.totalp=Number(item.orginalPrice*item.quantity)+Number(item.tax)-item.total_discount,
-           // console.log("itemp  22222222222222222222222222 "+item.totalp),
-           // item.totalp=Number(item.orginalPrice*item.quantity)+Number(item.tax)-item.discount,
             item.price=store.data.price,
-            
-           
-       
-            item.orginalPrice=store.data.price
+            item.tax+=store.data.Tax,
+           item.orginalPrice=store.data.price
          
             ):flag=false;
             }
@@ -264,29 +261,29 @@ console.log("this.summary_tax "+this.summary_tax);
           quantity: store.data.quantity,
           tax: store.data.Tax,
           priceAfterDiscount:  store.data.priceAfterDiscount,
-          additonal:1,
+        
         
         });}
          console.log(flag);
         }else{
          
-          console.log("qqqqqqqqqq "+store.data.quantity);
-      console.log("priceeeeeeeeeee "+store.data.Subtotal);
+          console.log("qqqqqqqqqq "+store.data.Tax);
+      console.log("priceeeeeeeeeee "+store.countTax);
         store.orderobj.order_details.push({
 
           id: store.data.productId,
           cid: i,
          // discount:store.data.discount,
          discount:this.d,
-          total_discount:store.data.discount,
+          total_discount:this.cheackQ==true?this.afdisCount: store.data.discount,
           name: store.data.name,
           totalp:store.data.Subtotal,
           price: store.data.price,
           orginalPrice: this.orginalPrice,
           quantity: store.data.quantity,
           tax: store.data.Tax,
-          priceAfterDiscount:  store.data.priceAfterDiscount,
-          additonal:0,
+          priceAfterDiscount:  this.cheackQ==true?this.afterP: store.data.priceAfterDiscount,
+       
         });}
 
         store.mainSaveBtn = true;
@@ -350,7 +347,7 @@ store.data.priceAfterDiscount=p.price_after_discount;
                 let total = store.data.quantity * store.data.price;
               //  console.log("priceeeeeeee  "+total);
                 let totalwithTax = total * (store.data.Tax / 100);
-             //   console.log("22222222222222222  "+totalwithTax);
+               console.log("22222222222222222  "+totalwithTax);
                 store.data.Subtotal = total + totalwithTax - store.data.discount;
                 
                 store.countTax = p.price_after_discount * (localStorage.getItem("tax") / 100);
@@ -367,6 +364,7 @@ store.data.priceAfterDiscount=p.price_after_discount;
     },
 
     onCalQauntity(e) {
+      this.cheackQ=true;
       const store = useTaskStore();
       let qty = 1;
 
@@ -380,6 +378,9 @@ store.data.priceAfterDiscount=p.price_after_discount;
       // if( e.target.value>0){
       //   store.data.quantity=1;
       // }
+  
+      console.log("qty= "+qty);
+    
 
       if (store.data.Tax == 0) {
         let total = qty * store.data.price;
@@ -392,19 +393,24 @@ store.data.priceAfterDiscount=p.price_after_discount;
           store.data.Subtotal = total - store.data.discount;
         
         }
+       
       } else {
         let total = qty *  store.priceAfterDiscount ;
+        this.afterP=total;
+        this.afdisCount=qty*store.data.discount;
+        console.log("total= "+total);
+        console.log("afdisCount= "+this.afdisCount);
      //   let total = qty * store.data.price;
         this.orginalPrice = total;
        
        // let totalwithTax = total *(store.countTax /100);
         let totalwithTax = total *(store.data.Tax/100);
         store.countTax=totalwithTax;
-      console.log("new tax= "+store.data.Tax);
+      
         if (store.data.discount == 0.0) {
 
           store.data.Subtotal = total + totalwithTax - store.data.discount;
-
+        
         } else {
           this.d= this.dd*qty;
         //c  store.allTax*qty;

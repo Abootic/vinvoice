@@ -377,7 +377,7 @@ export default {
           });
 
           store.orderobj.order_details.map((a) => {
-            delete a.additonal, delete a.priceAfterDiscount;
+           delete a.priceAfterDiscount;
           });
 
        

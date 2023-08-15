@@ -100,7 +100,7 @@
               </div>
               <!-- <div class="col-4 text-center"></div> -->
               <!-- <div class="col-6 text-center summury-details">{{ store.orderobj.tax }}</div> -->
-              <div class="col-6 text-center summury-details">{{ store.summray_tax }}</div>
+              <div class="col-6 text-center summury-details">{{ store.summray_tax.toFixed(2) }}</div>
             </div>
 
             <div class="row">

@@ -34,7 +34,7 @@
 
     <div id="col-start" class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
       <div class="row">
-        <div  v-bind:class="'col-lg-12 col-md-12 col-sm-12 table-header text-center  '+invoiceList.id">
+        <div  v-bind:class="'col-lg-12 col-md-12 col-sm-12 table-header text-title  text-center  '+invoiceList.id">
           {{ langStore.TRANSLATE("discount") }}
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 text-center text-title  mt-2">
@@ -58,7 +58,7 @@
           {{ langStore.TRANSLATE("tax") }}
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 text-center mt-2 ">
-          {{ invoiceList.Tax }}
+          {{ invoiceList.Tax.toFixed(2) }}
         </div>
       </div>
     </div>
