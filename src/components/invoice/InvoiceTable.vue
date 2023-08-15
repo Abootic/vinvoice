@@ -75,7 +75,7 @@
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
               <!-- v-on:input="onDiscount($event)" -->
-              <input readonly type="number" v-model="store.priceAfterDiscount" class="from-control table-form" />
+              <input readonly type="number" v-model="store.data.priceAfterDiscount" class="from-control table-form" />
             </div>
             <span class="text-danger">{{ discountErr }}</span>
           </div>
@@ -252,7 +252,9 @@ console.log("this.store.countTax "+store.countTax);
           store.orderobj.order_details.push({
           id: store.data.productId,
           cid: i,
-          discount:store.data.discount,
+          discount:store.data.discount  *store.data.quantity,
+         // discount:store.data.discount,
+        
           total_discount:store.data.discount,
           name: store.data.name,
           totalp:store.data.Subtotal,
@@ -260,8 +262,8 @@ console.log("this.store.countTax "+store.countTax);
           orginalPrice: this.orginalPrice,
           quantity: store.data.quantity,
           tax: store.data.Tax,
-          priceAfterDiscount:  store.data.priceAfterDiscount,
-        
+         // priceAfterDiscount:  store.data.priceAfterDiscount,
+          priceAfterDiscount:  store.data.priceAfterDiscount*store.data.quantity,
         
         });}
          console.log(flag);
@@ -395,7 +397,8 @@ store.data.priceAfterDiscount=p.price_after_discount;
         }
        
       } else {
-        let total = qty *  store.priceAfterDiscount ;
+      //  let total = qty *  store.priceAfterDiscount ;
+        let total = qty * store.data.priceAfterDiscount ;
         this.afterP=total;
         this.afdisCount=qty*store.data.discount;
         console.log("total= "+total);
