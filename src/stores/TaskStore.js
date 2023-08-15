@@ -84,11 +84,11 @@ return this.products;
       // price+=this.orderobj.order_details[i].totalp;
  
      p+=this.orderobj.order_details[i].priceAfterDiscount;
-  
+     console.log("this.orderobj.order_details[i].priceAfterDiscount  "+this.orderobj.order_details[i].priceAfterDiscount);
        discount+= Number(this.orderobj.order_details[i].total_discount);
        orginalPrice=Number(this.orderobj.order_details[i].orginalPrice);
        console.log("LLLLLLLLLLLLLLLLLLLL0  "+p);
-       _tax=this.orderobj.order_details[i].tax;
+       _tax+=this.orderobj.order_details[i].tax;
      // _tax+=this.orderobj.order_details[i].tax*this.orderobj.order_details[i].quantity;
        
       }

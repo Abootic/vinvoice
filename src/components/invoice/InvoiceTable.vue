@@ -205,7 +205,7 @@ if(this.d!==0){
 //store.tt=this.summary_tax;
 console.log("this.store.countTax "+store.countTax);
         store.addToInvoice(store.data);
-     
+     console.log("hhhhhhhhhh  "+ store.data.priceAfterDiscount);
        // store.allTax=   store.data.Tax +    store.allTax;
         let flag=false;
         if(store.orderobj.order_details.length>0){
@@ -320,7 +320,7 @@ store.discount=this.d;
           
             if (p.id == item.id) {
               store.data.productId=p.id;
-          //   console.log("taxxxxxxxxxxxxxxx  "+p.apply_vat);
+            console.log("taxxxxxxxxxxxxxxx  "+p.apply_vat);
               if (p.apply_vat == 0) {
 this.dd= p.price - p.price_after_discount;
                 store.data.discount = p.price - p.price_after_discount;
