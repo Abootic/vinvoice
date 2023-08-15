@@ -95,7 +95,7 @@ return this.products;
        
       }else{
         p=this.orderobj.order_details[i].priceAfterDiscount*this.orderobj.order_details[i].quantity;
-        discount=discount*this.orderobj.order_details[i].quantity;
+        discount=this.orderobj.order_details[i].total_discount*this.orderobj.order_details[i].quantity;
         _tax=this.orderobj.order_details[i].tax;
         console.log("discount  "+this.orderobj.order_details[i].total_discount*this.orderobj.order_details[i].quantity);
         console.log("tax  "+this.orderobj.order_details[i].tax);
