@@ -49,6 +49,9 @@ body{
   
   
 }
+.text-title{
+  font-family: system-ui !important;
+}
 .saveBtn{
   
   

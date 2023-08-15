@@ -8,8 +8,8 @@
             <div class="col-lg-12 col-md-12 col-sm-12 table-header text-center">{{ langStore.TRANSLATE("pname") }}</div>
 
             <div class="col-lg-12 col-md-12 col-sm-12 mt-2" id="dropdown-wrapper">
-              <div class="selected-item"  @click="isArrowVisible = !isArrowVisible">
-                <span style="    font-size: 13px; font-weight: bold;">{{ selectedItem != null ?
+              <div class="selected-item text-title "  @click="isArrowVisible = !isArrowVisible">
+                <span class="text-title " style="    font-size: 13px; ">{{ selectedItem != null ?
                   selectedItem.name : langStore.TRANSLATE("selectPruduct") }}</span>
                 <svg class="dtp-down-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                   <path
@@ -23,7 +23,7 @@
                 <span v-if="filterComboBox.length === 0"> No data Available</span>
                 <div class="options">
                   <ul>
-                    <li  @click="onSelectedItem(product)" v-for="(product, key) in filterComboBox" :key="key"
+                    <li class="text-title " @click="onSelectedItem(product)" v-for="(product, key) in filterComboBox" :key="key"
                       :value="product.id">{{ product.name }}</li>
 
                   </ul>
@@ -208,27 +208,40 @@ console.log("this.summary_tax "+this.summary_tax);
         if(store.orderobj.order_details.length>0){
           let f=store.orderobj.order_details.some(a=>a.name==store.data.name);
           if(f){
+            
           store.orderobj.order_details.filter(function(item){
             if(item.tax==0){
              
               return item.name===store.data.name?(flag=true,
             item.quantity+=store.data.quantity,
+            
             item.discount=store.data.discount,
            item.total_discount+=store.data.discount,
             item.price=store.data.price,
               item.totalp=item.quantity*store.data.price-item.total_discount,
+             
+              item.priceAfterDiscount+=store.data.priceAfterDiscount,
+              console.log("============ 11111 =========================="),
             //  item.totalp=item.quantity*store.data.price-item.discount,
             item.orginalPrice=item.price
        
             ):flag=false;
             }else{
+             
               return item.name===store.data.name?(flag=true,
+              
             item.quantity+=store.data.quantity,
+          
             item.discount=store.data.discount,
             item.total_discount+=store.data.discount,
-            item.totalp=Number(item.orginalPrice*item.quantity)+Number(item.tax)-item.total_discount,
+            item.totalp=Number(item.price*item.quantity),
+            console.log("============ 2222222 =========================="),
+            item.priceAfterDiscount+=store.data.priceAfterDiscount,
+          //  item.totalp=Number(item.orginalPrice*item.quantity)+Number(item.tax)-item.total_discount,
+           // console.log("itemp  22222222222222222222222222 "+item.totalp),
            // item.totalp=Number(item.orginalPrice*item.quantity)+Number(item.tax)-item.discount,
             item.price=store.data.price,
+            
            
        
             item.orginalPrice=store.data.price
@@ -237,7 +250,9 @@ console.log("this.summary_tax "+this.summary_tax);
             }
          
           });
-        }else{ store.orderobj.order_details.push({
+        }else{ 
+      
+          store.orderobj.order_details.push({
           id: store.data.productId,
           cid: i,
           discount:store.data.discount,
@@ -248,9 +263,13 @@ console.log("this.summary_tax "+this.summary_tax);
           orginalPrice: this.orginalPrice,
           quantity: store.data.quantity,
           tax: store.data.Tax,
+          priceAfterDiscount:  store.data.priceAfterDiscount,
+        
         });}
          console.log(flag);
         }else{
+         
+       
         store.orderobj.order_details.push({
           id: store.data.productId,
           cid: i,
@@ -263,6 +282,7 @@ console.log("this.summary_tax "+this.summary_tax);
           orginalPrice: this.orginalPrice,
           quantity: store.data.quantity,
           tax: store.data.Tax,
+          priceAfterDiscount:  store.data.priceAfterDiscount,
         });}
 
         store.mainSaveBtn = true;
@@ -307,15 +327,15 @@ this.dd= p.price - p.price_after_discount;
                 store.data.Tax = 0;
                 store.countTax = 0;
                 store.data.price = p.price;
-
+store.data.priceAfterDiscount=p.price_after_discount;
                 let total = store.data.quantity * store.data.price;
                 store.data.Subtotal = (total - store.data.discount).toPrecision(2);
                 
-                console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxx "+store.data.Subtotal );
+              ///  console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxx "+store.data.Subtotal );
                 this.orginalPrice = store.data.price;
 
               } else {
-
+                store.data.priceAfterDiscount=p.price_after_discount;
                 store.data.Tax = localStorage.getItem("tax");
                 store.data.discount = p.price - p.price_after_discount;
                 this.dd= p.price - p.price_after_discount;
@@ -324,14 +344,14 @@ this.dd= p.price - p.price_after_discount;
         
                 store.data.price = p.price;
                 let total = store.data.quantity * store.data.price;
-                console.log("priceeeeeeee  "+total);
+              //  console.log("priceeeeeeee  "+total);
                 let totalwithTax = total * (store.data.Tax / 100);
-                console.log("22222222222222222  "+totalwithTax);
+             //   console.log("22222222222222222  "+totalwithTax);
                 store.data.Subtotal = total + totalwithTax - store.data.discount;
                 
                 store.countTax = p.price_after_discount * (localStorage.getItem("tax") / 100);
                 this.orginalPrice = store.data.price;
-                console.log("55555555555555555555 "+store.data.Subtotal );
+             
                 //console.log( store.countTax);
 
               }
@@ -375,7 +395,8 @@ this.dd= p.price - p.price_after_discount;
        
        // let totalwithTax = total *(store.countTax /100);
         let totalwithTax = total *(store.data.Tax/100);
-      
+        store.countTax=totalwithTax;
+      console.log("new tax= "+store.data.Tax);
         if (store.data.discount == 0.0) {
 
           store.data.Subtotal = total + totalwithTax - store.data.discount;

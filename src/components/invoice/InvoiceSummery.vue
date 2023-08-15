@@ -6,11 +6,11 @@
         <div class="container-fluid " >
           <div class="row bg-color" >
             <div class="col-lg-6 col-mb-6 col-sm-6 col-xs-6">
-              <div>{{ langStore.TRANSLATE("invoiceType") }}</div>
+              <div class="text-title ">{{ langStore.TRANSLATE("invoiceType") }}</div>
               <select 
               :disabled="store.blockBtn"
                 v-on:change="onSelectInvoicePattern($event)"
-                class="form-select text-strat   mt-1 mb-1"
+                class="form-select text-strat text-title   mt-1 mb-1"
                 aria-label="Default select example"
               >
                 
@@ -24,7 +24,7 @@
               </select>
             </div>
             <div class="col-lg-6 col-mb-6 col-sm-6 col-xs-6">
-              <div>{{ langStore.TRANSLATE("pay_method") }}</div>
+              <div class="text-title ">{{ langStore.TRANSLATE("pay_method") }}</div>
               <select
               :disabled="store.blockBtn"
                 v-on:change="onSelectPayment($event)"
@@ -100,7 +100,7 @@
               </div>
               <!-- <div class="col-4 text-center"></div> -->
               <!-- <div class="col-6 text-center summury-details">{{ store.orderobj.tax }}</div> -->
-              <div class="col-6 text-center summury-details">{{ store.tt }}</div>
+              <div class="col-6 text-center summury-details">{{ store.summray_tax }}</div>
             </div>
 
             <div class="row">
@@ -109,7 +109,7 @@
               </div>
               <!-- <div class="col-4 text-center"></div> -->
               <div class="col-6 text-center summury-details">
-                {{ store.discount }}
+                {{ store.summray_discount }}
               </div>
             </div>
             <!-- <div class="row">

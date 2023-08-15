@@ -27,6 +27,8 @@ export const useTaskStore =defineStore("taskStore",{
               discount: 0.0,
               Tax: 0,
               Subtotal: 0.0,
+              priceAfterDiscount:0,
+            
             },
         isInvoiceFormShow:false,
         isInvoiceFormValueShow:false,
@@ -37,12 +39,14 @@ export const useTaskStore =defineStore("taskStore",{
     products:[],
     payment_methods:[],
     total:0.0,
+    summray_total:0,
     countTax:0,
     discount:0,
+    summray_discount:0,
     summray_tax:0,
     totalOrginalPrice:0,
     cutomerName:"",
-allTax:0
+
         }
     },
 getters:{
@@ -70,34 +74,37 @@ return this.products;
         return await state.orderobj;
     },
     getInvoiceSummery(){
-     let price=0.0;
+    // let price=0;
+   let  p=0;
      let _tax=0;
      let orginalPrice=0.0;
      let discount=0;
      if(   this.orderobj.order_details.length>0){
-      console.log("dddddddddd "+JSON.stringify(this.orderobj.order_details));
       for(let i=0;i<this.orderobj.order_details.length;i++){
-       price+=this.orderobj.order_details[i].totalp;
-       //price+=this.orderobj.order_details[i].price;
-      // discount+=this.orderobj.order_details[i].discount;
+      // price+=this.orderobj.order_details[i].totalp;
+ 
+     p+=this.orderobj.order_details[i].priceAfterDiscount;
+  
        discount+= Number(this.orderobj.order_details[i].total_discount);
-       orginalPrice+=this.orderobj.order_details[i].orginalPrice;
-       _tax+=this.orderobj.order_details[i].tax
-       console.log("eeeeeeeeee allTax"+_tax);
-       this.allTax=_tax;
+       orginalPrice=Number(this.orderobj.order_details[i].orginalPrice);
+       console.log("LLLLLLLLLLLLLLLLLLLL0  "+p);
+       _tax+=this.orderobj.order_details[i].tax*this.orderobj.order_details[i].quantity;
+       
       }
-      this.total=price;
-   
-     // console.log("forrrrrrrrrrr  "+this.total);
+      
+    
      }
+     
+     this.total=p+_tax;
   
     this.discount=discount;
       this.totalOrginalPrice=orginalPrice-discount;
-      this.orderobj.cost_without_tax= orginalPrice;
-     
 
-     
+      //this.orderobj.cost_without_tax= this.total-_tax;
+      this.orderobj.cost_without_tax= p;
+      console.log("summeryyyyyyyyyy discount "+  this.discount)
      this.summray_tax= Number( _tax);
+     this.summray_discount= this.discount;
      this.orderobj.cost_with_tax=this.total;
      this.orderobj.tax=this.summray_tax;
    
@@ -124,16 +131,18 @@ actions:{
        this.invoiceDetailsList.filter(function(item){
    
         if(item.name===data.name){
-          console.log("ccccccccccccccccccccccccc  ");
+          console.log("  ");
         }else{
-          console.log("bbbbbbbbbbbbbbbbbbbbbbb  ");
+          console.log("  ");
         }
       if(item.tax==0){
         //totalt=0;
+       
           return item.name===data.name?(falg=true, 
-        
+          
             item.quantity+=data.quantity, 
             item.discount+=data.discount,
+          
             item.Subtotal=(data.price*item.quantity-item.discount).toPrecision(4),
            
          
@@ -141,20 +150,27 @@ actions:{
            ):falg=false}else{
            // total=0;
             return item.name===data.name?(falg=true, 
-            
+              // console.log("ggggggggggggggggggggggg  "+item.Tax),
+              // console.log("orginal price is===============> "+data.price),
               item.quantity+=data.quantity, 
               item.discount+=data.discount,  
+              item.Tax*=item.quantity,
               item.Subtotal=((data.price*item.quantity)+item.Tax-item.discount).toPrecision(4),
-            
+              ///////// try
+      
+         ///end try
             item.price=(item.quantity*data.price).toPrecision(4)
          
              ):falg=false;
            }
-        });}else{
+
+        });
+       
+      }else{
           this.invoiceDetailsList.push(data);
         }
         console.log("flag======= "+falg);
-
+       
       }else{this.invoiceDetailsList.push(data);}
 
 this.isInvoiceFormValueShow=true;

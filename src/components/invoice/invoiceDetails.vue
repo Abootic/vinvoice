@@ -37,7 +37,7 @@
         <div  v-bind:class="'col-lg-12 col-md-12 col-sm-12 table-header text-center  '+invoiceList.id">
           {{ langStore.TRANSLATE("discount") }}
         </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 text-center mt-2">
+        <div class="col-lg-12 col-md-12 col-sm-12 text-center text-title  mt-2">
           {{ invoiceList.discount }}
         </div>
       </div>
@@ -47,7 +47,7 @@
         <div v-bind:class="'col-lg-12 col-md-12 col-sm-12 table-header text-center  '+invoiceList.id">
           {{ langStore.TRANSLATE("afterdiscount") }}
         </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 text-center mt-2">
+        <div class="col-lg-12 col-md-12 col-sm-12 text-title text-center mt-2">
           {{ invoiceList.price - invoiceList.discount }}
         </div>
       </div>
